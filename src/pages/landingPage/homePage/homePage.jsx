@@ -1,19 +1,16 @@
 import React from 'react'
-import pics from '../../../assets/beerMug.png' ;
 import Xtext from '../../../assets/Xtext.png' ;
-import jar from '../../../assets/jar.png' ;
 import {HomePageBackground, HomePageParentDiv, 
         SolutionButton, Links, BarxAndBeerMugHolder, 
         AboutBarxHolder, BeerMugHolder, AboutBarx ,
         BusinessOwner, Barx , AboutTheCompany,
-        RegisterButton, AboutBarxWriteUp, XLogo, Service,
+        RegisterButton, AboutBarxWriteUp,  Service,
         Experience, MerryMenHolder, BeerMug, Break, Jar,
         OwnerHeader, BarOwner, BarOwnerSolutio} from './homePage.styled'
 
 function HomePage() {
     return (
-        
-        <div>
+        <div id='home-page'>
             < HomePageParentDiv >
                 <HomePageBackground >
                     < BarxAndBeerMugHolder >
@@ -21,10 +18,8 @@ function HomePage() {
                             < AboutBarx >
                                 <Barx >
                                     <AboutBarxWriteUp > Bar </AboutBarxWriteUp>
-                                    {//<XLogo />
-                                        }
                                      <img src ={Xtext} alt=""  />
-                                    <Service> Excelence in Service</Service>
+                                    <Service>Excellence in Service</Service>
                                 </Barx>
                                 < AboutTheCompany >
                                     <AboutBarxWriteUp > 

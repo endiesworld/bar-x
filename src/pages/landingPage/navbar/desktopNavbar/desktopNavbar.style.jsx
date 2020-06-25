@@ -1,4 +1,5 @@
 import styled from 'styled-components' ;
+import {Link} from 'react-scroll' ;
 import {ReactComponent as Xlogo} from '../../../../assets/navbar-barx.svg'
 
 export const Navbar = styled.nav`
@@ -21,6 +22,13 @@ z-index: 1 ;
     opacity: 1 ;
 
 `
+export const Links = styled(Link)`
+    height: 100%;
+    width: 100% ;
+    text-decoration: none;
+    cursor: pointer;
+`;
+
 export const NavbarLogo = styled(Xlogo)`
 fill: currentColor;
   
