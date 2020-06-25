@@ -1,13 +1,19 @@
 import React from 'react' ;
-import {Navbar, Button, NavbarLogo} from './desktopNavbar.style' ;
+import logo from '../../../../assets/Xlogo.png' ;
+import {Navbar, Button, NavbarLogo, NavbarLogoHolder} from './desktopNavbar.style' ;
 
 
 function DesktopNavbar() {
     return (
         <div>
             <Navbar>
-                <NavbarLogo/>
-                <Button > REGISTER BUSINESS</Button>
+                < NavbarLogoHolder> 
+                { //<NavbarLogo/>
+                }
+                <img src ={logo} alt=""  />
+                </NavbarLogoHolder>
+                
+                <Button > Register your Business</Button>
             </Navbar>
             
         </div>

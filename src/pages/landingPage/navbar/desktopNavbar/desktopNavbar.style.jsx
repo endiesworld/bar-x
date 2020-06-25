@@ -8,13 +8,22 @@ export const Navbar = styled.nav`
     justify-content: space-between;
     width: 100%;
     height: 7vh;
-    background-color: #ffffff;
+    background-color: #FFFFFF;
     border-bottom: 5px solid #e8eaf6;
-`
-export const NavbarLogo = styled(Xlogo)`
+    z-index: 1 ;
     opacity: 1;
+`
+export const NavbarLogoHolder = styled.div`
+
+z-index: 1 ;
     height: 80% ;
     margin-left: 3% ;
+    opacity: 1 ;
+
+`
+export const NavbarLogo = styled(Xlogo)`
+fill: currentColor;
+  
 `
 
 export const Button = styled.button`
