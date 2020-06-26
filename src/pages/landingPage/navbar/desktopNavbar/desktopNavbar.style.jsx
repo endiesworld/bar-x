@@ -1,6 +1,7 @@
 import styled from 'styled-components' ;
 import {Link} from 'react-scroll' ;
-import {ReactComponent as Xlogo} from '../../../../assets/navbar-barx.svg'
+import xlogo from '../../../../assets/Xlogo.png';
+//import {ReactComponent as Xlogo} from '../../../../assets/navbar-barx.svg'
 
 export const Navbar = styled.nav`
     position: fixed ;
@@ -8,20 +9,20 @@ export const Navbar = styled.nav`
     align-items: center ;
     justify-content: space-between;
     width: 100%;
-    height: 7vh;
+    height: 10vh;
     background-color: #FFFFFF;
     border-bottom: 5px solid #e8eaf6;
     z-index: 1 ;
     opacity: 1;
-`
+` ;
 export const NavbarLogoHolder = styled.div`
 
-z-index: 1 ;
+    width: 8% ;
     height: 80% ;
     margin-left: 3% ;
     opacity: 1 ;
+`;
 
-`
 export const Links = styled(Link)`
     height: 100%;
     width: 100% ;
@@ -29,20 +30,29 @@ export const Links = styled(Link)`
     cursor: pointer;
 `;
 
-export const NavbarLogo = styled(Xlogo)`
-fill: currentColor;
-  
-`
+
+export const Xlogo = styled.div`
+background-image: url(${xlogo});
+width: 100% ;
+height: 90% ;
+background-repeat: no-repeat ;
+margin-top: 2% ;
+`;
+
 
 export const Button = styled.button`
-    height: 80%;
+    height: 70%;
     width: 13% ;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
+    background: #FFFFFF ;
     border: 1px solid #291563;
     border-radius: 4px;
-    opacity: 1;
     margin-right: 3% ;
-    font-family: Regular 16px/19px Montserrat;
-    color: #291563;
-
-`
+    display: flex ;
+    align-items: center ;
+` ;
+export const ButtonText = styled.h2`
+     color: #291563;
+     font-family: Regular  Montserrat;
+     font-size: 0.6rem ;
+     width: 100% ;
+` ;

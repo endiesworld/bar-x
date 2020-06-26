@@ -1,6 +1,6 @@
 import React from 'react' ;
-import logo from '../../../../assets/Xlogo.png' ;
-import {Navbar, Button, NavbarLogoHolder, Links} from './desktopNavbar.style' ;
+
+import { Navbar, Xlogo, Button, ButtonText, NavbarLogoHolder, Links} from './desktopNavbar.style' ;
 
 
 function DesktopNavbar() {
@@ -9,12 +9,12 @@ function DesktopNavbar() {
             <Navbar>
                 < NavbarLogoHolder> 
                 <Links  to='home-page' smooth={true} duration={500} >
-                     <img src ={logo} alt=""  />
+                        <Xlogo />
                     </Links>
                 
                 </NavbarLogoHolder>
                 
-                <Button > Register your Business</Button>
+                <Button > <ButtonText>Register your Business</ButtonText> </Button>
             </Navbar>
             
         </div>

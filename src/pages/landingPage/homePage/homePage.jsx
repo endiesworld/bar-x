@@ -3,7 +3,7 @@ import Xtext from '../../../assets/Xtext.png' ;
 import {HomePageBackground, HomePageParentDiv, 
         SolutionButton, Links, BarxAndBeerMugHolder, 
         AboutBarxHolder, BeerMugHolder, AboutBarx ,
-        BusinessOwner, Barx , AboutTheCompany,
+    BusinessOwner, Barx, AboutTheCompany, ButtonText,
         RegisterButton, AboutBarxWriteUp,  Service,
         Experience, MerryMenHolder, BeerMug, Break, Jar,
         OwnerHeader, BarOwner, BarOwnerSolutio} from './homePage.styled'
@@ -23,11 +23,11 @@ function HomePage() {
                                 </Barx>
                                 < AboutTheCompany >
                                     <AboutBarxWriteUp > 
-                                        We are a company aimed at improving your Bar-<Experience>Xperience </Experience>
+                                        We are a company aimed at <Break />improving your Bar-<Experience>Xperience</Experience>
                                         <Break />as both a business and consumer 
                                     </AboutBarxWriteUp>
                                 </AboutTheCompany>
-                                < RegisterButton >Register your business</RegisterButton>
+                                < RegisterButton > <ButtonText>Register your business</ButtonText></RegisterButton>
                             </AboutBarx>
                             < BusinessOwner >
                                 <OwnerHeader>
@@ -52,7 +52,7 @@ function HomePage() {
                         </BeerMugHolder>
                     </BarxAndBeerMugHolder>
                     <Links  to='about-page' smooth={true} duration={500} >
-                         < SolutionButton>Our Solutions</SolutionButton> 
+                        < SolutionButton> <ButtonText>Our Solutions</ButtonText></SolutionButton> 
                     </Links>
                 </HomePageBackground>
                 

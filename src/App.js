@@ -1,6 +1,6 @@
 import React from 'react';
 import LandingPage from './pages/landingPage/landingPage.page'
-
+import './App.css' ;
 
 
 function App() {
