@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-scroll";
-import { ReactComponent as Mug } from "../../../assets/beer-mug.svg";
-import { ReactComponent as X } from "../../../assets/page-barx.svg";
-import { ReactComponent as jar } from "../../../assets/drink-beer-jar.svg";
+import { ReactComponent as Mug } from "../../assets/beer-mug.svg";
+import { ReactComponent as X } from "../../assets/page-barx.svg";
+import { ReactComponent as jar } from "../../assets/drink-beer-jar.svg";
 
 export const HomePageParentDiv = styled.div`
   width: 100vw;

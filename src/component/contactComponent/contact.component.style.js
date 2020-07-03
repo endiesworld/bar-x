@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactComponent as skyJet } from "../../../assets/contact-us.svg";
+import { ReactComponent as skyJet } from "../../assets/contact-us.svg";
 
 export const ContactPageParent = styled.div`
   width: 100vw;

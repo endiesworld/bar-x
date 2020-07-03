@@ -25,9 +25,9 @@ import {
   OwnerHeader,
   BarOwner,
   BarOwnerSolutio,
-} from "./homePage.styled";
+} from "../home.component.style";
 
-function HomePage() {
+function DesktopHomeComponent() {
   return (
     <div id="home-page">
       <HomePageParentDiv>
@@ -89,4 +89,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default DesktopHomeComponent;

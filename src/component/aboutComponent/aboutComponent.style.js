@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import { ReactComponent as barOwnerImage } from "../../../assets/business-owner.svg";
-import { ReactComponent as jar } from "../../../assets/drink-beer-jar.svg";
-import { ReactComponent as merryMenImage } from "../../../assets/merry-men.svg";
+import { ReactComponent as barOwnerImage } from "../../assets/business-owner.svg";
+import { ReactComponent as jar } from "../../assets/drink-beer-jar.svg";
+import { ReactComponent as merryMenImage } from "../../assets/merry-men.svg";
 
 export const AboutPageParent = styled.div`
   width: 100vw;
