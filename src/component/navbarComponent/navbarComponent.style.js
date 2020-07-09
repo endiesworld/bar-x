@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-scroll";
+import { Link as link } from "react-router-dom";
 import { ReactComponent as xlogo } from "../../assets/navbar-barx.svg";
 
 export const Navbar = styled.nav`
@@ -34,17 +35,9 @@ export const Xlogo = styled(xlogo)`
   margin-left: 5%;
 `;
 
-export const Button = styled.button`
-  height: 70%;
-  background: #ffffff;
-  border: 1px solid #291563;
-  border-radius: 4px;
-  margin-right: 3%;
-  display: flex;
-  align-items: center;
-`;
-export const ButtonText = styled.h2`
-  font-size: 0.8rem;
-  color: #291563;
-  font-family: Regular "Montserrat";
+export const Buttonholder = styled(link)`
+  text-decoration: none;
+  cursor: pointer;
+  margin-right: ${(props) => (props.device === "mobile" ? "8%" : "3%")};
+  margin-bottom: 0.3%;
 `;

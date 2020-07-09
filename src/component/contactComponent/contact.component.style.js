@@ -9,7 +9,7 @@ export const ContactPageParent = styled.div`
 
 export const ImageAndDetailsHolder = styled.div`
   width: 100vw;
-  height: 90vh;
+  height: 92%;
   display: flex;
 `;
 

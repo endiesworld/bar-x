@@ -1,8 +1,13 @@
 import React from "react";
+
+import { connect } from "react-redux";
+
+import ButtonComponent from "../../registerButton/registerButton.component";
+import WhatWeDo from "../../whatWeDo/whatWedo.component";
+
 import {
   HomePageBackground,
   HomePageParentDiv,
-  SolutionButton,
   Links,
   BarxAndBeerMugHolder,
   WriteBar,
@@ -13,27 +18,23 @@ import {
   BusinessOwner,
   Barx,
   AboutTheCompany,
-  ButtonText,
-  RegisterButton,
-  AboutBarxWriteUp,
+  Buttonholder,
   Service,
-  Experience,
   MerryMenHolder,
   BeerMug,
-  Break,
   Jar,
   OwnerHeader,
   BarOwner,
   BarOwnerSolutio,
 } from "../home.component.style";
 
-function DesktopHomeComponent() {
+function DesktopHomeComponent({ deviceType }) {
   return (
     <div id="home-page">
       <HomePageParentDiv>
         <HomePageBackground>
-          <BarxAndBeerMugHolder>
-            <AboutBarxHolder>
+          <BarxAndBeerMugHolder device={deviceType}>
+            <AboutBarxHolder device={deviceType}>
               <AboutBarx>
                 <Barx>
                   <WriteBar> Bar </WriteBar>
@@ -41,15 +42,16 @@ function DesktopHomeComponent() {
                   <Service>Excellence in Service</Service>
                 </Barx>
                 <AboutTheCompany>
-                  <AboutBarxWriteUp>
-                    We are a company aimed at <Break />
-                    improving your Bar-<Experience>Xperience</Experience>
-                    <Break />
-                    as both a business and consumer
-                  </AboutBarxWriteUp>
-                  <RegisterButton>
-                    <ButtonText>Register your business</ButtonText>
-                  </RegisterButton>
+                  <WhatWeDo />
+                  {deviceType !== "mobile" && (
+                    <Buttonholder to="/signup">
+                      <ButtonComponent
+                        height="3em"
+                        width="14em"
+                        text="Register your business"
+                      />
+                    </Buttonholder>
+                  )}
                 </AboutTheCompany>
               </AboutBarx>
               <BusinessOwner>
@@ -64,10 +66,10 @@ function DesktopHomeComponent() {
                 </BarOwnerSolutio>
               </BusinessOwner>
             </AboutBarxHolder>
-            <BeerMugHolder>
-              <BeerMug />
-              <MerryMenHolder>
-                <OwnerHeader>
+            <BeerMugHolder device={deviceType}>
+              <BeerMug device={deviceType} />
+              <MerryMenHolder device={deviceType}>
+                <OwnerHeader device={deviceType}>
                   <BarOwner> Dear Merry Men</BarOwner>
                   <Jar />
                 </OwnerHeader>
@@ -79,9 +81,7 @@ function DesktopHomeComponent() {
             </BeerMugHolder>
           </BarxAndBeerMugHolder>
           <Links to="about-page" smooth={true} duration={500}>
-            <SolutionButton>
-              <ButtonText>Our Solutions</ButtonText>
-            </SolutionButton>
+            <ButtonComponent text="Our Solutions" />
           </Links>
         </HomePageBackground>
       </HomePageParentDiv>
@@ -89,4 +89,9 @@ function DesktopHomeComponent() {
   );
 }
 
-export default DesktopHomeComponent;
+const mapStateToProps = (state) => {
+  const { deviceType } = state.deviceType;
+  return { deviceType };
+};
+
+export default connect(mapStateToProps)(DesktopHomeComponent);

@@ -1,7 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import {
   AboutPageParent,
-  BusinessOwnerSide,
   BarOwnerImage,
   BarOwnerIntro,
   Jar,
@@ -9,16 +10,16 @@ import {
   BarOwner,
   BarOwnerSolutio,
   ClickHereToBegin,
-  CustomerSide,
+  ImageAndTextHolder,
   MerryMenImage,
   MerryMenIntro,
 } from "../aboutComponent.style";
 
-function DesktopAboutComponent() {
+function DesktopAboutComponent({ deviceType }) {
   return (
     <div>
-      <AboutPageParent id="about-page">
-        <BusinessOwnerSide>
+      <AboutPageParent id="about-page" device={deviceType}>
+        <ImageAndTextHolder device={deviceType}>
           <BarOwnerImage />
           <BarOwnerIntro>
             <OwnerHeader>
@@ -30,10 +31,14 @@ function DesktopAboutComponent() {
               publish and update menue list to the world, serve customers
               conviniently, and process payment with ease.
             </BarOwnerSolutio>
-            <ClickHereToBegin>Click here to begin</ClickHereToBegin>
+            {deviceType !== "mobile" ? (
+              <ClickHereToBegin>Click here to begin</ClickHereToBegin>
+            ) : (
+              ""
+            )}
           </BarOwnerIntro>
-        </BusinessOwnerSide>
-        <CustomerSide>
+        </ImageAndTextHolder>
+        <ImageAndTextHolder device={deviceType}>
           <MerryMenImage />
           <MerryMenIntro>
             <OwnerHeader>
@@ -45,12 +50,21 @@ function DesktopAboutComponent() {
               publish and update menue list to the world, serve customers
               conviniently, and process payment with ease.
             </BarOwnerSolutio>
-            <ClickHereToBegin>Click here to begin</ClickHereToBegin>
+            {deviceType !== "mobile" ? (
+              <ClickHereToBegin>Click here to begin</ClickHereToBegin>
+            ) : (
+              ""
+            )}
           </MerryMenIntro>
-        </CustomerSide>
+        </ImageAndTextHolder>
       </AboutPageParent>
     </div>
   );
 }
 
-export default DesktopAboutComponent;
+const mapStateToProps = (state) => {
+  const { deviceType } = state.deviceType;
+  return { deviceType };
+};
+
+export default connect(mapStateToProps)(DesktopAboutComponent);

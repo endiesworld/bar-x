@@ -1,4 +1,7 @@
 import React from "react";
+
+import FooterComponent from "../../footerComponent/footer.component";
+
 import {
   ContactPageParent,
   ImageAndDetailsHolder,
@@ -43,6 +46,7 @@ function DesktopContactComponent() {
             </MessageBox>
           </MessageHolder>
         </ImageAndDetailsHolder>
+        <FooterComponent />
       </ContactPageParent>
     </div>
   );

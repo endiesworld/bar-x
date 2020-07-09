@@ -8,14 +8,7 @@ export const AboutPageParent = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
-`;
-export const BusinessOwnerSide = styled.div`
-  margin-top: 70px;
-  width: 50vw;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: ${(props) => (props.device === "mobile" ? "column" : "row")};
 `;
 
 export const BarOwnerImage = styled(barOwnerImage)`
@@ -36,7 +29,7 @@ export const OwnerHeader = styled.div`
   justify-content: space-around;
   background-color: #ffba00;
   width: 60%;
-  height: 18%;
+  height: 20%;
   border-radius: 4px;
 `;
 
@@ -61,10 +54,11 @@ export const ClickHereToBegin = styled.p`
   cursor: pointer;
 `;
 
-export const CustomerSide = styled.div`
-  margin-top: 70px;
-  width: 50vw;
-  height: 100%;
+export const ImageAndTextHolder = styled.div`
+  margin-left: 10%;
+  margin-top: ${(props) => (props.device === "mobile" ? "10px" : "70px")};
+  width: ${(props) => (props.device === "mobile" ? "100vw" : "50vw")};
+  height: ${(props) => (props.device === "mobile" ? "50%" : "100%")};
   display: flex;
   flex-direction: column;
 `;
@@ -72,9 +66,11 @@ export const CustomerSide = styled.div`
 export const MerryMenImage = styled(merryMenImage)`
   width: 70%;
   height: 54%;
+  margin-right: 30%;
 `;
 
 export const MerryMenIntro = styled.div`
+  margin-right: 30%;
   align-self: center;
   width: 70%;
   height: 40%;

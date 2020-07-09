@@ -1,4 +1,5 @@
 import React from "react";
+
 import NavbarPage from "./navbar/navbar.page";
 import HomePage from "./homePage/home.page";
 import AboutPage from "./aboutUsPage/about.page";
@@ -6,7 +7,7 @@ import ContactPage from "./contactPage/contact.page";
 
 function LandingPage() {
   return (
-    <div>
+    <div id=" landing-page">
       <NavbarPage />
       <HomePage />
       <AboutPage />

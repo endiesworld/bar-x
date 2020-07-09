@@ -1,15 +1,17 @@
 import React from "react";
 
+import { connect } from "react-redux";
+
+import ButtonComponent from "../../registerButton/registerButton.component";
 import {
   Navbar,
   Xlogo,
-  Button,
-  ButtonText,
   NavbarLogoHolder,
   Links,
+  Buttonholder,
 } from "../navbarComponent.style";
 
-function DesktopNavbar() {
+function DesktopNavbar({ deviceType }) {
   return (
     <div>
       <Navbar>
@@ -18,13 +20,17 @@ function DesktopNavbar() {
             <Xlogo />
           </Links>
         </NavbarLogoHolder>
-
-        <Button>
-          <ButtonText>Register your Business</ButtonText>{" "}
-        </Button>
+        <Buttonholder device={deviceType} to="/signup">
+          <ButtonComponent text="Register your Business" />
+        </Buttonholder>
       </Navbar>
     </div>
   );
 }
 
-export default DesktopNavbar;
+const mapStateToProps = (state) => {
+  const { deviceType } = state.deviceType;
+  return { deviceType };
+};
+
+export default connect(mapStateToProps)(DesktopNavbar);
