@@ -2,7 +2,8 @@ import React from "react";
 
 import { connect } from "react-redux";
 
-import ButtonComponent from "../../registerButton/registerButton.component";
+import SigninAndRegister from "../../signinAndRegisterLinkComponent/signinAndRegister.component";
+
 import {
   Navbar,
   Xlogo,
@@ -20,8 +21,8 @@ function DesktopNavbar({ deviceType }) {
             <Xlogo />
           </Links>
         </NavbarLogoHolder>
-        <Buttonholder device={deviceType} to="/signup">
-          <ButtonComponent text="Register your Business" />
+        <Buttonholder>
+          <SigninAndRegister />
         </Buttonholder>
       </Navbar>
     </div>

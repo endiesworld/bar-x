@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Link } from "react-scroll";
-import { Link as link } from "react-router-dom";
 import { ReactComponent as Mug } from "../../assets/beer-mug.svg";
 import { ReactComponent as X } from "../../assets/page-barx.svg";
 import { ReactComponent as jar } from "../../assets/drink-beer-jar.svg";
@@ -74,9 +73,13 @@ export const AboutTheCompany = styled.div`
   margin-left: 10%;
 `;
 
-export const Buttonholder = styled(link)`
+export const Buttonholder = styled.div`
+  height: 20%;
+  width: 30%;
+  min-width: 180px;
   text-decoration: none;
   cursor: pointer;
+  margin-bottom: 0.3%;
 `;
 
 export const BeerMugHolder = styled.div`

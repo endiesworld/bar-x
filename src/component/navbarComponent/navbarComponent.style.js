@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-scroll";
-import { Link as link } from "react-router-dom";
+
 import { ReactComponent as xlogo } from "../../assets/navbar-barx.svg";
 
 export const Navbar = styled.nav`
@@ -35,7 +35,10 @@ export const Xlogo = styled(xlogo)`
   margin-left: 5%;
 `;
 
-export const Buttonholder = styled(link)`
+export const Buttonholder = styled.div`
+  height: 70%;
+  width: 13%;
+  min-width: 180px;
   text-decoration: none;
   cursor: pointer;
   margin-right: ${(props) => (props.device === "mobile" ? "8%" : "3%")};

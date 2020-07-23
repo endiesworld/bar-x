@@ -11,6 +11,7 @@ import {
 
 import LandingPage from "./pages/landingPage/landingPage";
 import SignUpPage from "./pages/signUpPage/signUp.page";
+import SigninPage from "./pages/signinPage/signin.page";
 import "./App.css";
 
 function App({ desktopView, mobileView }) {
@@ -49,6 +50,9 @@ function App({ desktopView, mobileView }) {
           </Route>
           <Route exact={true} path="/signup">
             <SignUpPage />
+          </Route>
+          <Route exact={true} path="/signin">
+            <SigninPage />
           </Route>
         </Switch>
       </div>

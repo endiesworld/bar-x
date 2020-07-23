@@ -1,31 +1,26 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import WhatWeDo from "../../component/whatWeDo/whatWedo.component";
-import BarWithXLogo from "../../component/barWithXLogo/barWithXLogo.component";
 import Footer from "../../component/footerComponent/footer.component";
+
+import SigninComponent from "../../component/formComponent/signinComponent/signin.component";
 
 import {
   SignUpParent,
   WhatWeDoSection,
   FormSection,
-  BarXholder,
-} from "./signUp.page.style";
+  BeerMug,
+} from "./signin.page.style";
 
-import SignUpComponent from "../../component/formComponent/signupComponent/signup.component";
-
-function SignUpPage({ deviceType }) {
+function SigninPage({ deviceType }) {
   return (
-    <div id="signup-page">
+    <div id="signin-page">
       <SignUpParent device={deviceType}>
         <WhatWeDoSection device={deviceType}>
-          <BarXholder>
-            <BarWithXLogo />
-          </BarXholder>
-          <WhatWeDo />
+          <BeerMug />
         </WhatWeDoSection>
         <FormSection device={deviceType}>
-          <SignUpComponent />
+          <SigninComponent />
           <Footer iconColor="#291563" textColor="#291563" />
         </FormSection>
       </SignUpParent>
@@ -38,4 +33,4 @@ const mapStateToProps = (state) => {
   return { deviceType };
 };
 
-export default connect(mapStateToProps)(SignUpPage);
+export default connect(mapStateToProps)(SigninPage);

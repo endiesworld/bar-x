@@ -3,6 +3,8 @@ import React from "react";
 import { connect } from "react-redux";
 
 import ButtonComponent from "../../registerButton/registerButton.component";
+import SigninAndRegister from "../../signinAndRegisterLinkComponent/signinAndRegister.component";
+
 import WhatWeDo from "../../whatWeDo/whatWedo.component";
 
 import {
@@ -44,12 +46,8 @@ function DesktopHomeComponent({ deviceType }) {
                 <AboutTheCompany>
                   <WhatWeDo />
                   {deviceType !== "mobile" && (
-                    <Buttonholder to="/signup">
-                      <ButtonComponent
-                        height="3em"
-                        width="14em"
-                        text="Register your business"
-                      />
+                    <Buttonholder>
+                      <SigninAndRegister color="#ffba00" />
                     </Buttonholder>
                   )}
                 </AboutTheCompany>
