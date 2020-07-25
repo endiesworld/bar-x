@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import DashBoard from "./pages/businessOwner/dashBoard/dashBoard.page";
 
 import { connect } from "react-redux";
 
@@ -53,6 +54,9 @@ function App({ desktopView, mobileView }) {
           </Route>
           <Route exact={true} path="/signin">
             <SigninPage />
+          </Route>
+          <Route exact={true} path="/dashboard">
+            <DashBoard />
           </Route>
         </Switch>
       </div>
