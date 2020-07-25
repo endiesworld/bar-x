@@ -5,7 +5,6 @@ export const ParentDiv = styled.div`
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height || "100%"};
   border-radius: 4px;
-  z-index: 1;
 `;
 export const Link = styled(link)`
   text-decoration: none;
