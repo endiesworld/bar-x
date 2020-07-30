@@ -1,14 +1,16 @@
 import React from "react";
 
-import { ParentDiv } from "./dashBoard.styled";
+import { DashBoardParentDiv } from "./dashBoard.page.styled";
 import Navbar from "../../../component/navbarComponent/desktop/desktop.navbar.component";
+import DashBoardWorkSpace from "../../../component/dashBoard/dashBoard.component" ;
+
 
 function DashBoard() {
   return (
-    <ParentDiv>
-      <Navbar dashboard="dashboard" color="#F5F5F5" />
-      DASHBOARD
-    </ParentDiv>
+    <DashBoardParentDiv>
+      <Navbar dashboard="dashboard" />
+      <DashBoardWorkSpace/>
+    </DashBoardParentDiv>
   );
 }
 

@@ -10,7 +10,7 @@ export const Navbar = styled.nav`
   justify-content: space-between;
   width: 100%;
   height: 10vh;
-  background-color: ${(props) => props.color || "#ffffff"};
+  background-color: ${(props) => props.backgroundColor || "#ffffff"};
   z-index: 1;
 `;
 export const NavbarLogoHolder = styled.div`

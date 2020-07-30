@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const NameHolder = styled.div`
-  background: ${(props) => props.backgorundColor || "#ffffff"};
+  background: ${(props) => props.backgroundColor || "#ffffff"};
   border-radius: 4px;
   display: flex;
   align-items: center;

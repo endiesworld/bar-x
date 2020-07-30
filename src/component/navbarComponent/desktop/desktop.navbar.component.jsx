@@ -13,6 +13,8 @@ import {
   Buttonholder,
 } from "../navbarComponent.style";
 
+import {dashBoardProperties} from "../../dashBoard/dashBoard"
+
 function DesktopNavbar({
   deviceType,
   dashboard,
@@ -20,9 +22,10 @@ function DesktopNavbar({
   backgroundColor,
   textColor,
 }) {
+
   return (
     <div>
-      <Navbar color={color}>
+      <Navbar backgroundColor={dashBoardProperties.background}>
         <NavbarLogoHolder>
           <Links to="home-page" smooth={true} duration={500}>
             <Xlogo />
@@ -31,7 +34,7 @@ function DesktopNavbar({
         <Buttonholder>
           {" "}
           {dashboard ? (
-            <BarName backgroundColor={backgroundColor} textColor={textColor} />
+            <BarName backgroundColor={dashBoardProperties.buttonBackground} textColor={dashBoardProperties.textColor} />
           ) : (
             <SigninAndRegister />
           )}
