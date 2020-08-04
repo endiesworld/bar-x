@@ -1,12 +1,14 @@
 import React from 'react';
-import {HomeParentDiv, HomeChildrenDiv } from './home.dashboard.styled'
+import {HomeParentDiv} from './home.dashboard.styled' ;
+import DisplayBoard from "./displayBoard.component" ;
+import {BusinessElement} from "../dashBoardTools" ;
 
 function HomeDashboard() {
-    const array = [0,1,2,3]
-    const background = ["#6200EE", "#3700B3", "#03DAC6", "#018786", "#B00020", "#BB86FC", "#008B00","#C6F6AD"]
+    const homeScreenProperies = BusinessElement.filter((property) => property.id !== "home") ;
     return (
         <HomeParentDiv >
-            { array.map((element) => <HomeChildrenDiv background={background[element]}/> )
+            { homeScreenProperies.map((element) => 
+            <DisplayBoard key = {element.id} display ={element}/> )
             
             }
         </HomeParentDiv>

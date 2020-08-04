@@ -13,7 +13,7 @@ import {
   Buttonholder,
 } from "../navbarComponent.style";
 
-import {dashBoardProperties} from "../../dashBoard/dashBoard"
+import {dashBoardProperties} from "../../dashBoard/dashBoardTools"
 
 function DesktopNavbar({
   deviceType,
