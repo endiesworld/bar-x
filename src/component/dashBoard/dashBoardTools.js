@@ -1,6 +1,8 @@
-import React from 'react' ;
-import { InventorySummary} from "./assets/iventory.styled" ;
+import React,{ useRef, useEffect} from 'react' ;
+import { PageSummary} from "./assets/iventory.styled" ;
+import {DOMSVG, drawArc} from "./dataVisualization/summaryForInventory" ;
 
+//import { ReactComponent as InventorySummary } from "./assets/home.iventory.svg";
 
 
 
@@ -22,27 +24,37 @@ const inventory = {
     id: "iventory" ,
     icon: <span role="img" aria-label="folder"> 📂 </span> ,
     text: <span>Iventory</span>,
-    synopsis: < InventorySummary />
+    synopsis: IventorySynopsis
 }
 
 const itemsMenue = {
     id: "itemsMenue" ,
     icon: <span role="img" aria-label="menue">📋 </span> ,
     text:  <span>items/Menue</span> ,
-    synopsis: ""
+    synopsis: <PageSummary />
 }
 
 const management = {
     id: "management" ,
     icon: <span role="img" aria-label="management"> 💼 </span> ,
     text: <span>management</span>,
-    synopsis: ""
+    synopsis: <PageSummary />
 }
 
 const dailyOps = {
     id: "dailyOps" ,
     icon: <span role="img" aria-label="management"> 📖 </span>  ,
     text: <span>Daily Ops </span> ,
-    synopsis: ""
+    synopsis: <PageSummary />
 }
 export const BusinessElement = [home, inventory, itemsMenue, management, dailyOps];
+
+function IventorySynopsis () {
+    console.log("iventory")
+    let myRef = useRef(null) ;
+   useEffect(()=> {
+        DOMSVG(myRef.current) ;
+        drawArc() ;
+    }) ;
+    return < PageSummary ref = {myRef}  />
+}

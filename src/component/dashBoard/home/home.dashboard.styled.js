@@ -3,10 +3,10 @@ import styled from "styled-components" ;
 
 export const HomeParentDiv = styled.div`
 width: 90% ;
-height: 90% ;
+height: 100% ;
  display: grid ;
  grid-template-columns: 50% 50% ;
- grid-template-rows: auto;
+ grid-template-rows: 50% 50%  auto;
  justify-items: center;
  align-items: center;
   overflow: auto ;
@@ -15,8 +15,8 @@ height: 90% ;
 
 export const HomeChildrenDiv = styled.div`
 cursor: pointer ;
-width: 30vw ;
-height: 35vh;
+width: 90% ;
+height: 85%;
 background-color:  #EEF2F7; 
 box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
 :hover {
@@ -26,6 +26,7 @@ box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
  
 `;
 export const Board = styled.div`
+/* background: green ; */
  margin-top: 1em ;
  margin-left: 1em ;
  width: 90% ;
@@ -37,8 +38,11 @@ export const DisplaySubject = styled.div`
 `;
 
 export const SummaryHolder = styled.div`
-  width: 90% ;
+  width: 100% ;
  height: 90% ;
- background: green ;
+ /* background: yellow ;
+ display: flex ;
+ justify-content: flex-end ;
+ align-content: flex-end ; */
 `;
 

@@ -1,8 +1,7 @@
-import React from 'react'
+import React, {useEffect, useRef} from 'react'
 import {HomeChildrenDiv, Board, DisplaySubject, SummaryHolder} from "./home.dashboard.styled" ;
-
 function DisplayBoard({display}) {
-console.log(display) ;
+    
     return (
         <HomeChildrenDiv>
             { (display !== "undefined") && (
@@ -10,8 +9,6 @@ console.log(display) ;
                     <DisplaySubject>{display.icon} {display.text}</DisplaySubject>
                     <SummaryHolder>{display.synopsis}</SummaryHolder>
                 </Board>
-                
-                
             )}
             
         </HomeChildrenDiv>

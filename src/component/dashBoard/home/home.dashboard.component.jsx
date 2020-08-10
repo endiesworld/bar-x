@@ -1,9 +1,11 @@
 import React from 'react';
 import {HomeParentDiv} from './home.dashboard.styled' ;
 import DisplayBoard from "./displayBoard.component" ;
-import {BusinessElement} from "../dashBoardTools" ;
+import {BusinessElement } from "../dashBoardTools" ;
+
 
 function HomeDashboard() {
+    
     const homeScreenProperies = BusinessElement.filter((property) => property.id !== "home") ;
     return (
         <HomeParentDiv >
