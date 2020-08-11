@@ -24,15 +24,7 @@ const inventory = {
     id: "iventory" ,
     icon: <span role="img" aria-label="folder"> 📂 </span> ,
     text: <span>Iventory</span>,
-    synopsis: function  () {
-        console.log("iventory")
-        let myRef = useRef(null) ;
-       useEffect(()=> {
-            DOMSVG(myRef.current) ;
-            drawArc() ;
-        }) ;
-        return < PageSummary ref = {myRef}  />
-    }
+    
 }
 
 const itemsMenue = {
