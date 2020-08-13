@@ -54,7 +54,6 @@ export const Barx = styled.div`
   align-items: center;
 `;
 export const WriteBar = styled.h2`
-  font-family: Regular "Montserrat";
   color: #ffffff;
   font-family: Regular "Montserrat";
 `;
