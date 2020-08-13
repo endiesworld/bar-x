@@ -10,7 +10,6 @@ import {
 import DataSummary from "./dataSummary.component";
 
 function DisplayBoard({ display }) {
-  console.log(display.id);
   return (
     <HomeChildrenDiv>
       {display !== "undefined" && (

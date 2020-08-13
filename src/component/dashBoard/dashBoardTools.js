@@ -20,19 +20,6 @@ const home = {
 };
 
 const inventory = {
-<<<<<<< HEAD
-    id: "iventory" ,
-    icon: <span role="img" aria-label="folder"> 📂 </span> ,
-    text: <span>Iventory</span>,
-    
-}
-||||||| merged common ancestors
-    id: "iventory" ,
-    icon: <span role="img" aria-label="folder"> 📂 </span> ,
-    text: <span>Iventory</span>,
-    synopsis: IventorySynopsis
-}
-=======
   id: "inventory",
   icon: (
     <span role="img" aria-label="folder">
@@ -42,7 +29,6 @@ const inventory = {
   ),
   text: <h2 style={{ display: "inline", fontSize: "0.8em" }}>Inventory</h2>,
 };
->>>>>>> 05fe90cb0387d6505bc08760e7c3672180d9a42f
 
 const itemsMenue = {
   id: "itemsMenue",

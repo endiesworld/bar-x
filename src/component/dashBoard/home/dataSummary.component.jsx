@@ -4,10 +4,12 @@ import {
   drawArc,
   legend,
 } from "../dataVisualization/summaryForInventory";
+
+import ItemsAndMenue from "./item-menue-Summary/items-menue.summary.component" ;
+
 import { PageSummary } from "../assets/iventory.styled";
 
 function IventorySynopsis() {
-  console.log("iventory");
   let myRef = useRef(null);
   useEffect(() => {
     DOMSVG(myRef.current);
@@ -18,13 +20,12 @@ function IventorySynopsis() {
 }
 
 function DataSummary(props) {
-  // return <IventorySynopsis />;
   switch (props.display) {
     case "inventory":
       return <IventorySynopsis />;
 
     case "itemsMenue":
-      return <div>item/menue data yet to be loaded</div>;
+      return <ItemsAndMenue />;
 
     case "management":
       return <div>management data yet to be loaded</div>;
