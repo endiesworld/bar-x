@@ -11,11 +11,12 @@ export const ManagementSummaryHolder = styled.div`
 ` ;
 
 export const ManagementIcon = styled(management)`
-padding-left: 2em ;
+margin-left: 4em ;
 margin-bottom: 1em ;
 width: 30% ;
-height: 30% ;
+height: 40% ;
 fill: #291563;
+
 ` ;
 
 export const LabelHolder = styled.div`
