@@ -28,7 +28,7 @@ function ItemAndMenueSummary() {
   return (
     <MenueSummaryDiv>
       {itemCategory.items.map((item, index) => (
-        <ItemStatusHolder>
+        <ItemStatusHolder key = {item}>
           <Items>{item}</Items>
           {itemCategory.availability[index] ? <Checked /> : <Unchecked />}
         </ItemStatusHolder>

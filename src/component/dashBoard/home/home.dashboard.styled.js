@@ -34,7 +34,7 @@ export const Board = styled.div`
  
 `; 
 export const DisplaySubject = styled.div`
- 
+ color: #291563;
 `;
 
 export const SummaryHolder = styled.div`

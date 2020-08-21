@@ -1,40 +1,25 @@
-import React, { useEffect, useRef } from "react";
-import {
-  DOMSVG,
-  drawArc,
-  legend,
-} from "../dataVisualization/summaryForInventory";
+import React from "react";
 
 import ItemsAndMenue from "./item-menue-Summary/items-menue.summary.component" ;
-
-import { PageSummary } from "../assets/iventory.styled";
-
-function IventorySynopsis() {
-  let myRef = useRef(null);
-  useEffect(() => {
-    DOMSVG(myRef.current);
-    drawArc();
-    legend();
-  });
-  return <PageSummary ref={myRef} />;
-}
+import ManagementSummary from "./management-summary/management.summary.component" ;
+import DataSummaryView from "../dataVisualization/data.summary"
 
 function DataSummary(props) {
   switch (props.display) {
     case "inventory":
-      return <IventorySynopsis />;
+      return <DataSummaryView inventory = "invetory"/>;
 
     case "itemsMenue":
       return <ItemsAndMenue />;
 
     case "management":
-      return <div>management data yet to be loaded</div>;
+      return <ManagementSummary />;
 
     case "dailyOps":
       return <div>dailyOps data yet to be loaded</div>;
 
     default:
-      return <div> default</div>;
+      return <div> No data for this view</div>;
   }
 }
 
