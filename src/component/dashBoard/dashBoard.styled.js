@@ -7,4 +7,5 @@ top: 10% ;
 height: 90vh ;
 width: 100% ;
 display: flex ;
+min-height: 600px ;
 `;

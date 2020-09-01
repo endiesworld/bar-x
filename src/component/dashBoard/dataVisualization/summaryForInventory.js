@@ -29,7 +29,7 @@ const SVGnodeExtractor = (unProcessedNode) => {
   return SVGnodeExtractor(unProcessedNode.childNodes[0]);
 };
 
-export const DOMSVG = (parentNode) => {
+export const domSVG = (parentNode) => {
   const HTMLSVGnode = SVGnodeExtractor(parentNode);
   d3Selection.node = select(HTMLSVGnode);
   d3Selection.nodeHeight = numberExtractor(d3Selection.node.style("height"));

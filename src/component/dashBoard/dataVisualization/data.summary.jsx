@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import {
-  DOMSVG,
+  domSVG,
   drawArc,
   legend,
   management,
@@ -14,7 +14,7 @@ import { PageSummary } from "../assets/iventory.styled";
 function DataSummaryView(props) {
   let myRef = useRef(null);
   useEffect(() => {
-    DOMSVG(myRef.current);
+    domSVG(myRef.current);
    if( props.inventory ) {
     drawArc();
     legend();

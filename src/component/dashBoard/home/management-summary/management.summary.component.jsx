@@ -1,5 +1,5 @@
 import React from 'react' ;
-import {ManagementSummaryHolder, ManagementIcon, LabelHolder } from "./management-summary"
+import {ManagementSummaryHolder, ManagementIcon, LabelHolder } from "./management-summary.styled"
 import DataSummaryView from "../../dataVisualization/data.summary" ;
 
 function ManagementSummary() {
