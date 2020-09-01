@@ -1,13 +1,14 @@
 import React from "react";
 
-import ItemsAndMenue from "./item-menue-Summary/items-menue.summary.component" ;
-import ManagementSummary from "./management-summary/management.summary.component" ;
-import DataSummaryView from "../dataVisualization/data.summary"
+import ItemsAndMenue from "./item-menue-Summary/items-menue.summary.component";
+import ManagementSummary from "./management-summary/management.summary.component";
+import DailyOpsSummary from "./dailyOps-summary/dailyOps.summary.component";
+import DataSummaryView from "../dataVisualization/data.summary";
 
 function DataSummary(props) {
   switch (props.display) {
     case "inventory":
-      return <DataSummaryView inventory = "invetory"/>;
+      return <DataSummaryView display="inventory" />;
 
     case "itemsMenue":
       return <ItemsAndMenue />;
@@ -16,7 +17,7 @@ function DataSummary(props) {
       return <ManagementSummary />;
 
     case "dailyOps":
-      return <div>dailyOps data yet to be loaded</div>;
+      return <DailyOpsSummary />;
 
     default:
       return <div> No data for this view</div>;
