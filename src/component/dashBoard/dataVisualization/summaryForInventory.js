@@ -1,5 +1,6 @@
 import { select, arc, pie, line } from "d3";
 
+//d3 node selector
 const d3Selection = {
   node: "",
   nodeHeight: "",
@@ -7,7 +8,8 @@ const d3Selection = {
   color: ["green", "tomato", "#ffba00", "#291563", "#03fcba"],
 };
 
-const data = {
+//data consumed in inventory
+const inventoryData = {
   value: [1, 1, 1, 1, 1],
   name: [
     "Issued L.P.O's ",
@@ -18,19 +20,30 @@ const data = {
   ],
 };
 
+//data consumed in management
+const departmentData = [
+  { Guards: 0 },
+  { Waiters: 0 },
+  { Barman: 0 },
+  { Supervisors: 0 },
+  { Manager: 0 },
+];
+
+//used to extract px from drawing viewport
 const numberExtractor = (param) => {
   const values = param.split("px");
   return +values[0];
 };
 
-const SVGnodeExtractor = (unProcessedNode) => {
+// to extract the specific node for drawing
+const svgNodeExtractor = (unProcessedNode) => {
   if (typeof unProcessedNode.childNodes[0] === "undefined")
     return unProcessedNode;
-  return SVGnodeExtractor(unProcessedNode.childNodes[0]);
+  return svgNodeExtractor(unProcessedNode.childNodes[0]);
 };
 
 export const domSVG = (parentNode) => {
-  const HTMLSVGnode = SVGnodeExtractor(parentNode);
+  const HTMLSVGnode = svgNodeExtractor(parentNode);
   d3Selection.node = select(HTMLSVGnode);
   d3Selection.nodeHeight = numberExtractor(d3Selection.node.style("height"));
   d3Selection.nodeWidth = numberExtractor(d3Selection.node.style("width"));
@@ -45,7 +58,7 @@ export const drawArc = () => {
   );
   let arcPath1;
   let DrawArc1 = arc();
-  let arcs = pie()(data.value);
+  let arcs = pie()(inventoryData.value);
   arcs.forEach((drawArc, index) => {
     arcPath1 = group.append("path");
     DrawArc1.innerRadius(0)
@@ -68,7 +81,7 @@ export const legend = () => {
 
   //picks new position for the legend of each data represented in the piechart
   //and appends an svg group to that position with the translate attribute
-  data.value.forEach((value, index) => {
+  inventoryData.value.forEach((value, index) => {
     // appends a new group
     legendGroup = d3Selection.node.append("g");
     legendGroup.attr(
@@ -95,47 +108,31 @@ export const legend = () => {
 
     //appends a text to the new sub-group formed above
     Legend = legendGroup.append("text");
-    Legend.text(data.name[index])
+    Legend.text(inventoryData.name[index])
       .attr("font-family", "sans-serif")
       .style("fill", "#291563")
       .attr("font-size", "0.6em");
   });
 };
 
-const drawLine = (group1, data1) => {
+const drawLine = (group1, data1, color="#ffba00") => {
   group1
     .append("path")
     .attr("d", data1)
-    .attr("stroke", "#ffba00")
+    .attr("stroke", color )
     .attr("stroke-width", "0.15em")
     .attr("fill", "none");
 };
 
 export const management = () => {
-  const Department = [
-    { Guards: 0 },
-    { Waiters: 0 },
-    { Barman: 0 },
-    { Supervisors: 0 },
-    { Manager: 0 },
-  ];
   let group = d3Selection.node.append("g");
   const myLine = line().context(null);
-  let DepartmentLineXPosition = d3Selection.nodeWidth * 0.25;
-  let DepartmentLineLength = d3Selection.nodeWidth * 0.7;
+  let departmentLineXPosition = d3Selection.nodeWidth * 0.25;
+  let departmentLineLength = d3Selection.nodeWidth * 0.7;
   let yPosition;
   let startPosition;
   let lineTo;
-  let initYPosition = d3Selection.nodeHeight / (Department.length + 1);
-
-  // const drawLine = () => {
-  //   group
-  //     .append("path")
-  //     .attr("d", myLine([startPosition, lineTo]))
-  //     .attr("stroke", "#ffba00")
-  //     .attr("stroke-width", "0.15em")
-  //     .attr("fill", "none");
-  // };
+  let initYPosition = d3Selection.nodeHeight / (departmentData.length + 1);
 
   const label = (textPostion, text) => {
     let textGroup = group.append("g");
@@ -152,24 +149,48 @@ export const management = () => {
   };
 
   // Generates i numbers of parallel lines along the Y axis
-  Department.forEach((dept, index) => {
+  departmentData.forEach((dept, index) => {
     yPosition = initYPosition * (index + 1);
-    startPosition = [DepartmentLineXPosition + 20, yPosition];
-    lineTo = [DepartmentLineLength - 40, yPosition];
+    startPosition = [departmentLineXPosition + 20, yPosition];
+    lineTo = [departmentLineLength - 40, yPosition];
     drawLine(group, myLine([startPosition, lineTo]));
     label(lineTo, dept);
 
     //Draw a diagonal line to meet the parallel lines
     startPosition = [
-      DepartmentLineXPosition - 40,
+      departmentLineXPosition - 40,
       d3Selection.nodeHeight / 2.3,
     ];
-    lineTo = [DepartmentLineXPosition + 20, yPosition];
+    lineTo = [departmentLineXPosition + 20, yPosition];
     drawLine(group, myLine([startPosition, lineTo]));
   });
 
   //Draw a straight line at the middle of the parallel lines
   startPosition = [5, d3Selection.nodeHeight / 2.3];
-  lineTo = [DepartmentLineXPosition - 40, d3Selection.nodeHeight / 2.3];
+  lineTo = [departmentLineXPosition - 40, d3Selection.nodeHeight / 2.3];
   drawLine(group, myLine([startPosition, lineTo]));
 };
+
+export const dailyOps = () => {
+  let group = d3Selection.node.append("g");
+  const myLine = line().context(null);
+  let viewportxStartPosition = 20;
+  let viewportyStartPosition = 20;
+  let viewportxStopPosition = d3Selection.nodeWidth - 10;
+  let viewportyStopPosition = d3Selection.nodeHeight - 20;
+  let lineStartPosition ;
+  let lineTo   ;
+  
+  lineStartPosition = [viewportxStartPosition, viewportyStartPosition]
+  lineTo = [viewportxStartPosition , viewportyStopPosition] ;
+  drawLine(group, myLine([lineStartPosition, 
+    lineTo]));
+  console.log(lineStartPosition , lineTo) ;
+
+  lineStartPosition = [viewportxStartPosition, viewportyStopPosition]
+  lineTo = [viewportxStopPosition , viewportyStopPosition] ;
+  drawLine(group, myLine([lineStartPosition, 
+      lineTo])); 
+      console.log(lineStartPosition , lineTo) ; 
+
+}
