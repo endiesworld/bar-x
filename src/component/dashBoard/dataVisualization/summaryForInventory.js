@@ -29,6 +29,13 @@ const departmentData = [
   { Manager: 0 },
 ];
 
+//data consumed by dailyOps method
+const dailyOrder = {
+  recieved: 200,
+  confirmed: 180,
+  executed: 150,
+};
+
 //used to extract px from drawing viewport
 const numberExtractor = (param) => {
   const values = param.split("px");
@@ -115,11 +122,11 @@ export const legend = () => {
   });
 };
 
-const drawLine = (group1, data1, color="#ffba00") => {
+const drawLine = (group1, data1, color = "#ffba00") => {
   group1
     .append("path")
     .attr("d", data1)
-    .attr("stroke", color )
+    .attr("stroke", color)
     .attr("stroke-width", "0.15em")
     .attr("fill", "none");
 };
@@ -172,25 +179,39 @@ export const management = () => {
 };
 
 export const dailyOps = () => {
-  let group = d3Selection.node.append("g");
+  let orderStage = ["recieved", "confirmed", "executed"];
+  let parentGroup = d3Selection.node.append("g");
   const myLine = line().context(null);
-  let viewportxStartPosition = 20;
+  let viewportxStartPosition = 50;
   let viewportyStartPosition = 20;
-  let viewportxStopPosition = d3Selection.nodeWidth - 10;
+  let viewportxStopPosition =
+    d3Selection.nodeWidth - d3Selection.nodeWidth * 0.5;
   let viewportyStopPosition = d3Selection.nodeHeight - 20;
-  let lineStartPosition ;
-  let lineTo   ;
-  
-  lineStartPosition = [viewportxStartPosition, viewportyStartPosition]
-  lineTo = [viewportxStartPosition , viewportyStopPosition] ;
-  drawLine(group, myLine([lineStartPosition, 
-    lineTo]));
-  console.log(lineStartPosition , lineTo) ;
+  let lineStartPosition;
+  let lineTo;
+  let barWidth = 50;
+  let chartGroup;
 
-  lineStartPosition = [viewportxStartPosition, viewportyStopPosition]
-  lineTo = [viewportxStopPosition , viewportyStopPosition] ;
-  drawLine(group, myLine([lineStartPosition, 
-      lineTo])); 
-      console.log(lineStartPosition , lineTo) ; 
+  //Draw vertical line
+  lineStartPosition = [viewportxStartPosition, viewportyStartPosition];
+  lineTo = [viewportxStartPosition, viewportyStopPosition];
+  drawLine(parentGroup, myLine([lineStartPosition, lineTo]));
 
-}
+  //Draw horizontal line
+  lineStartPosition = [viewportxStartPosition, viewportyStopPosition];
+  lineTo = [viewportxStopPosition, viewportyStopPosition];
+  drawLine(parentGroup, myLine([lineStartPosition, lineTo]));
+
+  chartGroup = parentGroup.append("g");
+  //chartGroup = d3Selection.node.append("g");
+  chartGroup
+    .attr("transform", `translate(100, ${viewportyStopPosition})`)
+    .attr("transform", `rotate(180deg)`);
+
+  // appends a rectangle to the new group and sets the rectangle attributes
+  let bar = chartGroup.append("rect");
+  bar
+    .style("width", 50)
+    .style("height", 500)
+    .style("fill", d3Selection.color[0]);
+};
