@@ -204,14 +204,12 @@ export const dailyOps = () => {
 
   chartGroup = parentGroup.append("g");
   //chartGroup = d3Selection.node.append("g");
-  chartGroup
-    .attr("transform", `translate(100, ${viewportyStopPosition})`)
-    .attr("transform", `rotate(180deg)`);
+  chartGroup.attr("transform", `translate(100, 20)`);
 
   // appends a rectangle to the new group and sets the rectangle attributes
   let bar = chartGroup.append("rect");
   bar
     .style("width", 50)
-    .style("height", 500)
+    .style("height", 100)
     .style("fill", d3Selection.color[0]);
 };
