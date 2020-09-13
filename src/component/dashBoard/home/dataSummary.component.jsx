@@ -3,12 +3,12 @@ import React from "react";
 import ItemsAndMenue from "./item-menue-Summary/items-menue.summary.component";
 import ManagementSummary from "./management-summary/management.summary.component";
 import DailyOpsSummary from "./dailyOps-summary/dailyOps.summary.component";
-import DataSummaryView from "../dataVisualization/data.summary";
+import InventorySummary from "./inventory-summary/inventory.summary.component";
 
 function DataSummary(props) {
   switch (props.display) {
     case "inventory":
-      return <DataSummaryView display="inventory" />;
+      return <InventorySummary/>;
 
     case "itemsMenue":
       return <ItemsAndMenue />;

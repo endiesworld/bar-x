@@ -15,7 +15,7 @@ function ItemAndMenueSummary() {
       "snacks",
       "water",
       "juice",
-      "yoghort",
+      "yughort",
       "soft-drinks",
       "malt-drinks",
       "wine",

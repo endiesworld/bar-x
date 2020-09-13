@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
-import { drawArc, legend, management , dailyOps} from "./summaryForInventory";
-
+import { drawArc} from "./summaryForInventory";
+import {management } from "./summaryForManagement";
+import { dailyOps} from "./summaryForDailyOps";
 import { PageSummary } from "../assets/iventory.styled";
 import D3SVGViewPortGenerator from "./createViewPortNode" ;
 
@@ -13,7 +14,6 @@ function DataSummaryView(props) {
     switch (props.display) {
       case "inventory": {
         drawArc(viewport);
-        legend(viewport);
         break;
       }
       case "management": {

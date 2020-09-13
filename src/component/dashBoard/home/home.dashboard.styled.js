@@ -40,9 +40,5 @@ export const DisplaySubject = styled.div`
 export const SummaryHolder = styled.div`
   width: 100% ;
  height: 90% ;
- /* background: yellow ;
- display: flex ;
- justify-content: flex-end ;
- align-content: flex-end ; */
 `;
 
