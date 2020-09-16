@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import DashBoard from "./pages/businessOwner/dashBoard/dashBoard.page";
 
 import { connect } from "react-redux";
@@ -43,24 +42,14 @@ function App({ desktopView, mobileView }) {
   });
 
   return (
-    <Router>
-      <div className="App">
-        <Switch>
-          <Route exact={true} path="/">
-            <LandingPage />
-          </Route>
-          <Route exact={true} path="/signup">
-            <SignUpPage />
-          </Route>
-          <Route exact={true} path="/signin">
-            <SigninPage />
-          </Route>
-          <Route exact={true} path="/dashboard">
-            <DashBoard />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/signin" element={<SigninPage />} />
+        <Route path="/dashboard/*" element={<DashBoard />} />
+      </Routes>
+    </div>
   );
 }
 
