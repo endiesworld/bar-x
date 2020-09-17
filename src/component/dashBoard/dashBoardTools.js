@@ -16,7 +16,7 @@ const home = {
       🏠{" "}
     </span>
   ),
-  text: <h2 style={{ display: "inline", fontSize: "0.8em" }}> home </h2>,
+  text: <h2 style={{ paddingLeft: "0.5em", display: "inline", fontSize: "0.8em" }}> home </h2>,
 };
 
 const inventory = {
@@ -27,7 +27,7 @@ const inventory = {
       📂{" "}
     </span>
   ),
-  text: <h2 style={{ display: "inline", fontSize: "0.8em" }}>Inventory</h2>,
+  text: <h2 style={{  display: "inline", fontSize: "0.8em", paddingLeft: "0.5em" }}>Inventory</h2>,
 };
 
 const itemsMenue = {
@@ -37,7 +37,7 @@ const itemsMenue = {
       📋{" "}
     </span>
   ),
-  text: <h2 style={{ display: "inline", fontSize: "0.8em" }}>items/Menue</h2>,
+  text: <h2 style={{ paddingLeft: "0.5em", display: "inline", fontSize: "0.8em" }}>items/Menue</h2>,
 };
 
 const management = {
@@ -48,7 +48,7 @@ const management = {
       💼{" "}
     </span>
   ),
-  text: <h2 style={{ display: "inline", fontSize: "0.8em" }}>management</h2>,
+  text: <h2 style={{ paddingLeft: "0.5em", display: "inline", fontSize: "0.8em" }}>management</h2>,
 };
 
 const dailyOps = {
@@ -59,7 +59,7 @@ const dailyOps = {
       📖{" "}
     </span>
   ),
-  text: <h2 style={{ display: "inline", fontSize: "0.8em" }}>Daily Ops </h2>,
+  text: <h2 style={{ paddingLeft: "0.5em", display: "inline", fontSize: "0.8em" }}>Daily Ops </h2>,
 };
 export const BusinessElement = [
   home,
