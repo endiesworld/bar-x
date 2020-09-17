@@ -10,7 +10,7 @@ function TaskBar() {
   return (
     <TaskBarParentDiv background={dashBoardProperties.background}>
       {BusinessElement.map((element) => (
-        <Link to={element.id}>
+        <Link to={element.id} key={element.id}>
           <TaskBarElementHolder key={element.id}>
             {element.icon} {element.text}
           </TaskBarElementHolder>

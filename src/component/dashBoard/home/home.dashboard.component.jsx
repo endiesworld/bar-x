@@ -12,6 +12,7 @@ function HomeDashboard() {
       {homeScreenProperies.map((element) => (
         <DisplayBoard key={element.id} display={element} />
       ))}
+      {/* HOME dashBoardTools */}
     </HomeParentDiv>
   );
 }

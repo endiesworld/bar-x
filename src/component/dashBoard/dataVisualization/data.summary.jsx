@@ -1,16 +1,16 @@
 import React, { useEffect, useRef } from "react";
-import { drawArc} from "./summaryForInventory";
-import {management } from "./summaryForManagement";
-import { dailyOps} from "./summaryForDailyOps";
+import { drawArc } from "./summaryForInventory";
+import { management } from "./summaryForManagement";
+import { dailyOps } from "./summaryForDailyOps";
 import { PageSummary } from "../assets/iventory.styled";
-import D3SVGViewPortGenerator from "./createViewPortNode" ;
+import D3SVGViewPortGenerator from "./createViewPortNode";
 
 function DataSummaryView(props) {
   let myRef = useRef(null);
   useEffect(() => {
-  let viewport = new D3SVGViewPortGenerator(myRef.current) ;
-  viewport.svgDOMProcessor() ;
-  
+    let viewport = new D3SVGViewPortGenerator(myRef.current);
+    viewport.svgDOMProcessor();
+
     switch (props.display) {
       case "inventory": {
         drawArc(viewport);
@@ -27,7 +27,6 @@ function DataSummaryView(props) {
       default:
         break;
     }
-  
   });
   return <PageSummary ref={myRef} />;
 }
