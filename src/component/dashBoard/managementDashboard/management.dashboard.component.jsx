@@ -1,11 +1,31 @@
 import React from "react";
+import {
+  ManagementFeaturesHolder,
+  ManagementFeatures,
+  IconHolder,
+} from "./management.dashboard.styled";
+import { managementFeatures } from "./management/management.features";
+import { connect } from "react-redux";
 
-function ManagementDashboard() {
+function ManagementDashboard({ deviceType }) {
   return (
-    <div>
-      <h1>Management DASHBOARD</h1>
-    </div>
+    <ManagementFeaturesHolder deviceType={deviceType}>
+      {managementFeatures.map((value) => (
+        <ManagementFeatures deviceType={deviceType} key={value.id}>
+          <IconHolder deviceType={deviceType} key={value.id}>
+            {value.image}
+          </IconHolder>
+
+          {value.message}
+        </ManagementFeatures>
+      ))}
+    </ManagementFeaturesHolder>
   );
 }
 
-export default ManagementDashboard;
+const mapStateToProps = (state) => {
+  const { deviceType } = state.deviceType;
+  return { deviceType };
+};
+
+export default connect(mapStateToProps)(ManagementDashboard);

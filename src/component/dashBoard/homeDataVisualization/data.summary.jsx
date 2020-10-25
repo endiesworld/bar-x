@@ -4,14 +4,18 @@ import { management } from "./summaryForManagement";
 import { dailyOps } from "./summaryForDailyOps";
 import { PageSummary } from "../assets/iventory.styled";
 import D3SVGViewPortGenerator from "./createViewPortNode";
+import { connect } from "react-redux";
+import { d3ChildnodeGenerator } from "./d3ChildnodeGenerator";
 
-function DataSummaryView(props) {
+function DataSummaryView({ display, deviceType }) {
   let myRef = useRef(null);
-  useEffect(() => {
-    let viewport = new D3SVGViewPortGenerator(myRef.current);
-    viewport.svgDOMProcessor();
 
-    switch (props.display) {
+  useEffect(() => {
+    let viewport = new D3SVGViewPortGenerator(
+      d3ChildnodeGenerator(myRef.current)
+    );
+
+    switch (display) {
       case "inventory": {
         drawArc(viewport);
         break;
@@ -27,8 +31,20 @@ function DataSummaryView(props) {
       default:
         break;
     }
-  });
-  return <PageSummary ref={myRef} />;
+    return () => {
+      viewport.remove();
+    };
+  }, [display, deviceType]);
+  return (
+    <>
+      <PageSummary ref={myRef} />
+    </>
+  );
 }
 
-export default DataSummaryView;
+const mapStateToProps = (state) => {
+  const { deviceType } = state.deviceType;
+  return { deviceType };
+};
+
+export default connect(mapStateToProps)(DataSummaryView);

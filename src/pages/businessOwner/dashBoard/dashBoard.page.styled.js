@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const DashBoardParentDiv = styled.div`
-  height: 100vh ;
-  width: 100vw ;
-  
+  height: ${(props) => (props.deviceType === "mobile" ? "auto" : "100vh")};
+  width: 100%;
 `;
-

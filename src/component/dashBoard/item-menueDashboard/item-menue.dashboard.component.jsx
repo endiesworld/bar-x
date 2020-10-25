@@ -1,11 +1,31 @@
 import React from "react";
+import {
+  ParentOptionsHolder,
+  OptionOne,
+  ViewMenu,
+  UpdateMenu,
+  Message,
+} from "./item-menue.dashboard.styled";
+import { connect } from "react-redux";
 
-function ItemMenueDashboard() {
+function ItemMenueDashboard({ deviceType }) {
   return (
-    <div>
-      <h1>ITEM AND MENUE DASHBOARD</h1>
-    </div>
+    <ParentOptionsHolder deviceType={deviceType}>
+      <OptionOne deviceType={deviceType}>
+        <UpdateMenu />
+        <Message> Update item/menu list</Message>
+      </OptionOne>
+      <OptionOne deviceType={deviceType}>
+        <ViewMenu />
+        <Message> view today's menu </Message>
+      </OptionOne>
+    </ParentOptionsHolder>
   );
 }
 
-export default ItemMenueDashboard;
+const mapStateToProps = (state) => {
+  const { deviceType } = state.deviceType;
+  return { deviceType };
+};
+
+export default connect(mapStateToProps)(ItemMenueDashboard);

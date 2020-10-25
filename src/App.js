@@ -7,42 +7,27 @@ import { connect } from "react-redux";
 import {
   loadMobileView,
   loadDesktopView,
+  loadTabView,
 } from "./redux/deviceType/deviceType.action";
 
 import LandingPage from "./pages/landingPage/landingPage";
 import SignUpPage from "./pages/signUpPage/signUp.page";
 import SigninPage from "./pages/signinPage/signin.page";
+import { checkScreenSize } from "./screenTypes/deviceTypeSelector";
 import "./App.css";
 
-function App({ desktopView, mobileView }) {
-  let screenSize = window.innerWidth;
-  screenSize > 645 ? desktopView() : mobileView();
+function App({ desktopView, mobileView, tabView, deviceType }) {
+  checkScreenSize(mobileView, tabView, desktopView, deviceType);
 
-  const changeDeviceType = (newScreenSize) => {
-    screenSize = newScreenSize;
-    newScreenSize > 645 ? desktopView() : mobileView();
+  const checkNewScreenSize = () => {
+    checkScreenSize(mobileView, tabView, desktopView, deviceType);
   };
-
-  const checkScreenSize = () => {
-    if (
-      !(
-        (window.innerWidth > 645 && screenSize > 645) ||
-        (window.innerWidth < 645 && screenSize < 645)
-      )
-    ) {
-      changeDeviceType(window.innerWidth);
-    }
-  };
-
   useEffect(() => {
-    window.addEventListener("resize", checkScreenSize);
-    return () => {
-      window.removeEventListener("resize", checkScreenSize);
-    };
+    window.addEventListener("resize", checkNewScreenSize);
   });
 
   return (
-    <div className="App">
+    <div className="app">
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignUpPage />} />
@@ -53,11 +38,17 @@ function App({ desktopView, mobileView }) {
   );
 }
 
+const mapStateToProps = (state) => {
+  const { deviceType } = state.deviceType;
+  return { deviceType };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     mobileView: () => dispatch(loadMobileView()),
     desktopView: () => dispatch(loadDesktopView()),
+    tabView: () => dispatch(loadTabView()),
   };
 };
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

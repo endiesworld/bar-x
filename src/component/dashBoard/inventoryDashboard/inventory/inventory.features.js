@@ -1,66 +1,94 @@
-import React from 'react'
-
+import React from "react";
+import {
+  Message,
+  LPO,
+  Store,
+  Refrigerator,
+  Bar,
+} from "./inventory.features.styled";
 
 const generateLPO = {
-    id: "Generate LPO",
-    message: <h2>Generate LPO </h2>
-}
+  id: "Generate LPO",
+  image: <LPO />,
+  message: <Message>Generate LPO </Message>,
+};
 
 const lpoStatus = {
-    id: "LPO status",
-    message: <h2> check L.P.Os status </h2>
-}
+  id: "LPO status",
+  image: <LPO />,
+  message: <Message> Check L.P.Os status </Message>,
+};
 
-const changeLPOStatus = {
-    id: "LPO status",
-    message: <h2> update L.P.Os status </h2>
-}
+const updateLPOStatus = {
+  id: "update status",
+  image: <LPO />,
+  message: <Message> Update L.P.Os status </Message>,
+};
 
 const receiveIntoStore = {
-    id: "receive into store",
-    message: <h2> receive items into store </h2>
-}
+  id: "receive into store",
+  image: <Store />,
+  message: <Message> Receive items into store </Message>,
+};
 
 const takeOutFromStore = {
-    id: "take out from store",
-    message: <h2>take items out from store </h2> 
-}
+  id: "take out from store",
+  image: <Store />,
+  message: <Message>Remove items from store </Message>,
+};
 
 const takeStoreStock = {
-    id: "store stock",
-    message: <h2>take stock of items in the store </h2> 
-}
+  id: "store stock",
+  image: <Store />,
+  message: <Message>take store stock </Message>,
+};
 
 const receiveIntoRefrigerator = {
-    id: "receive into Refrigerator",
-    message: <h2> receive items into Refrigerator </h2>  
-}
+  id: "receive into Refrigerator",
+  image: <Refrigerator />,
+  message: <Message> Receive items into Refrigerator </Message>,
+};
 
 const takeOutFromRefrigerator = {
-    id: "take out from Refrigerator",
-    message: <h2>take items out from the refrigerator </h2>
-}
+  id: "take out from Refrigerator",
+  image: <Refrigerator />,
+  message: <Message>Remove items from refrigerator </Message>,
+};
 const takeRefrigeratorStock = {
-    id: "refrigerator stock",
-    message: <h2>take stock of items in the refrigerator </h2> 
-}
+  id: "refrigerator stock",
+  image: <Refrigerator />,
+  message: <Message>take refrigerator stock </Message>,
+};
 
 const receiveIntoBar = {
-    id: "receive into bar",
-    message: <h2> receive items into the bar </h2>
-}
+  id: "receive into bar",
+  image: <Bar />,
+  message: <Message> Receive items into the bar </Message>,
+};
 
 const takeOutFromBar = {
-    id: "take out from Bar",
-    message: <h2>take items out from the bar </h2> 
-}
+  id: "take out from Bar",
+  image: <Bar />,
+  message: <Message>Remove items from bar </Message>,
+};
 
 const takeBarStock = {
-    id: "refrigerator stock",
-    message: <h2>take stock of items in the bar </h2> 
-}
+  id: "bar stock",
+  image: <Bar />,
+  message: <Message>take bar stock </Message>,
+};
 
-export const inventoryFeature = [generateLPO, lpoStatus, changeLPOStatus,
-        receiveIntoStore, takeOutFromStore,
-takeStoreStock, receiveIntoRefrigerator, takeOutFromRefrigerator,
-takeRefrigeratorStock, receiveIntoBar, takeOutFromBar, takeBarStock] ;
+export const inventoryFeatures = [
+  generateLPO,
+  lpoStatus,
+  updateLPOStatus,
+  receiveIntoStore,
+  takeOutFromStore,
+  takeStoreStock,
+  receiveIntoRefrigerator,
+  takeOutFromRefrigerator,
+  takeRefrigeratorStock,
+  receiveIntoBar,
+  takeOutFromBar,
+  takeBarStock,
+];

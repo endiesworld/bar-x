@@ -1,11 +1,30 @@
 import React from "react";
+import {
+  InventoryFeaturesHolder,
+  InventoryFeatures,
+  IconHolder,
+} from "./inventory.dashboard.styled";
 
-function InventoryDashboard() {
+import { inventoryFeatures } from "./inventory/inventory.features";
+import { connect } from "react-redux";
+
+function InventoryDashboard({ deviceType }) {
   return (
-    <div>
-      <h1>INVENTORY DASHBOARD</h1>
-    </div>
+    <InventoryFeaturesHolder deviceType={deviceType}>
+      {inventoryFeatures.map((value) => (
+        <InventoryFeatures deviceType={deviceType} key={value.id}>
+          <IconHolder deviceType={deviceType}>{value.image}</IconHolder>
+
+          {value.message}
+        </InventoryFeatures>
+      ))}
+    </InventoryFeaturesHolder>
   );
 }
 
-export default InventoryDashboard;
+const mapStateToProps = (state) => {
+  const { deviceType } = state.deviceType;
+  return { deviceType };
+};
+
+export default connect(mapStateToProps)(InventoryDashboard);

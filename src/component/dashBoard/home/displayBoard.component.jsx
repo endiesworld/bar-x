@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import {
   HomeChildrenDiv,
@@ -9,9 +10,9 @@ import {
 
 import DataSummary from "./dataSummary.component";
 
-function DisplayBoard({ display }) {
+function DisplayBoard({ display, deviceType }) {
   return (
-    <HomeChildrenDiv>
+    <HomeChildrenDiv deviceType={deviceType}>
       {display !== "undefined" && (
         <Board>
           <DisplaySubject>
@@ -26,4 +27,9 @@ function DisplayBoard({ display }) {
   );
 }
 
-export default DisplayBoard;
+const mapStateToProps = (state) => {
+  const { deviceType } = state.deviceType;
+  return { deviceType };
+};
+
+export default connect(mapStateToProps)(DisplayBoard);

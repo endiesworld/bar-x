@@ -15,7 +15,11 @@ const deviceTypeReducer = (state = INIT_STATE, action) => {
         ...state,
         deviceType: "large",
       };
-
+    case "TAB_VIEW":
+      return {
+        ...state,
+        deviceType: "medium",
+      };
     default:
       return state;
   }

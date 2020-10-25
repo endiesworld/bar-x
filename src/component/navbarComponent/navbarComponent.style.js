@@ -4,6 +4,7 @@ import { Link } from "react-scroll";
 import { ReactComponent as xlogo } from "../../assets/navbar-barx.svg";
 
 export const Navbar = styled.nav`
+  min-width: 360px;
   position: fixed;
   display: flex;
   align-items: center;
@@ -36,9 +37,9 @@ export const Xlogo = styled(xlogo)`
 export const Buttonholder = styled.div`
   height: 70%;
   width: 13%;
-  min-width: 180px;
+  min-width: 150px;
   text-decoration: none;
   cursor: pointer;
-  margin-right: ${(props) => (props.device === "mobile" ? "8%" : "3%")};
+  margin-right: ${(props) => (props.deviceType === "mobile" ? "8%" : "3%")};
   margin-bottom: 0.3%;
 `;

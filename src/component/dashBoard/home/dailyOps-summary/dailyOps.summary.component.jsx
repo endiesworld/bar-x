@@ -1,6 +1,6 @@
 import React from "react";
 import { DailyOpsSummaryHolder } from "./dailyOps-summary.styled";
-import DataSummaryView from "../../dataVisualization/data.summary";
+import DataSummaryView from "../../homeDataVisualization/data.summary";
 
 function ManagementSummary() {
   return (

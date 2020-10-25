@@ -1,11 +1,9 @@
-import styled from "styled-components" ;
+import styled from "styled-components";
 
 export const WorkenvironmentParentDiv = styled.div`
-background-color: ${(props)=> props.background || "#ffffff"} ;
-position: relative;
-top: 10% ;
-height: 90vh ;
-width: 100% ;
-display: flex ;
-min-height: 600px ;
+  position: relative;
+  top: 10%;
+  height: ${(props) => (props.deviceType === "mobile" ? "auto" : "90%")};
+  width: 100%;
+  display: flex;
 `;

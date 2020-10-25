@@ -6,10 +6,12 @@ import InventoryDashboard from "../inventoryDashboard/inventory.dashboard.compon
 import ItemMenueDashboard from "../item-menueDashboard/item-menue.dashboard.component";
 import ManagementDashboard from "../managementDashboard/management.dashboard.component";
 import DailyOpsDashboard from "../dailyOpsDashboard/dailyOps.dashboard.component";
+import { connect } from "react-redux";
 
-function WorkEnvironment() {
+function WorkEnvironment({ deviceType }) {
   return (
-    <WorkEnvironmentDiv>
+    <WorkEnvironmentDiv deviceType={deviceType}>
+      {" "}
       <Routes>
         <Route path="/" element={<HomeDashboard />} />
         <Route path="/home" element={<HomeDashboard />} />
@@ -22,4 +24,9 @@ function WorkEnvironment() {
   );
 }
 
-export default WorkEnvironment;
+const mapStateToProps = (state) => {
+  const { deviceType } = state.deviceType;
+  return { deviceType };
+};
+
+export default connect(mapStateToProps)(WorkEnvironment);

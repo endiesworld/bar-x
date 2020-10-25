@@ -13,7 +13,7 @@ import {
   Buttonholder,
 } from "../navbarComponent.style";
 
-import {dashBoardProperties} from "../../dashBoard/dashBoardTools"
+import { dashBoardProperties } from "../../dashBoard/dashBoardTools";
 
 function DesktopNavbar({
   deviceType,
@@ -22,25 +22,25 @@ function DesktopNavbar({
   backgroundColor,
   textColor,
 }) {
-
   return (
-    <div>
-      <Navbar backgroundColor={dashBoardProperties.background}>
-        <NavbarLogoHolder>
-          <Links to="home-page" smooth={true} duration={500}>
-            <Xlogo />
-          </Links>
-        </NavbarLogoHolder>
-        <Buttonholder>
-          {" "}
-          {dashboard ? (
-            <BarName backgroundColor={dashBoardProperties.buttonBackground} textColor={dashBoardProperties.textColor} />
-          ) : (
-            <SigninAndRegister />
-          )}
-        </Buttonholder>
-      </Navbar>
-    </div>
+    <Navbar backgroundColor={dashBoardProperties.background}>
+      <NavbarLogoHolder>
+        <Links to="home-page" smooth={true} duration={500}>
+          <Xlogo />
+        </Links>
+      </NavbarLogoHolder>
+      <Buttonholder deviceType={deviceType}>
+        {" "}
+        {dashboard ? (
+          <BarName
+            backgroundColor={dashBoardProperties.buttonBackground}
+            textColor={dashBoardProperties.textColor}
+          />
+        ) : (
+          <SigninAndRegister />
+        )}
+      </Buttonholder>
+    </Navbar>
   );
 }
 
