@@ -15,7 +15,7 @@ export const Signin = styled.h2`
 `;
 
 export const Link = styled(link)`
-  width: 50%;
+  width: 60%;
   text-decoration: none;
   cursor: pointer;
 `;

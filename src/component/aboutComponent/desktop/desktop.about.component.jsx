@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import FooterComponent from "../../footerComponent/footer.component";
 
 import {
   AboutPageParent,
@@ -13,21 +14,22 @@ import {
   ImageAndTextHolder,
   MerryMenImage,
   MerryMenIntro,
+  AboutPage,
 } from "../aboutComponent.style";
 
 function DesktopAboutComponent({ deviceType }) {
   return (
-    <div>
-      <AboutPageParent id="about-page" device={deviceType}>
+    <AboutPage id="about-page" device={deviceType}>
+      <AboutPageParent device={deviceType}>
         <ImageAndTextHolder device={deviceType}>
           <BarOwnerImage />
-          <BarOwnerIntro>
-            <OwnerHeader>
+          <BarOwnerIntro device={deviceType}>
+            <OwnerHeader device={deviceType}>
               <BarOwner>Bar Owners</BarOwner>
               <Jar />
             </OwnerHeader>
             <BarOwnerSolutio>
-              Bar X provide bars with automated inventory management solution,
+              Bar-X provide bars with automated inventory management solution,
               publish and update menue list to the world, serve customers
               conviniently, and process payment with ease.
             </BarOwnerSolutio>
@@ -40,13 +42,13 @@ function DesktopAboutComponent({ deviceType }) {
         </ImageAndTextHolder>
         <ImageAndTextHolder device={deviceType}>
           <MerryMenImage />
-          <MerryMenIntro>
-            <OwnerHeader>
+          <MerryMenIntro device={deviceType}>
+            <OwnerHeader device={deviceType}>
               <BarOwner>Merry men</BarOwner>
               <Jar />
             </OwnerHeader>
             <BarOwnerSolutio>
-              Bar X provide bars with automated inventory management solution,
+              Bar-X provide bars with automated inventory management solution,
               publish and update menue list to the world, serve customers
               conviniently, and process payment with ease.
             </BarOwnerSolutio>
@@ -58,7 +60,8 @@ function DesktopAboutComponent({ deviceType }) {
           </MerryMenIntro>
         </ImageAndTextHolder>
       </AboutPageParent>
-    </div>
+      <FooterComponent />
+    </AboutPage>
   );
 }
 

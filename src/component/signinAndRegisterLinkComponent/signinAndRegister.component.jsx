@@ -6,7 +6,7 @@ function SigninAndRegister(props) {
   return (
     <Parentdiv>
       <Link to="/signin">
-        <Signin color={props.color}>Log in</Signin>
+        <Signin color={props.color}>Login</Signin>
       </Link>
 
       <Register color={props.color} />

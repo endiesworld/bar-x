@@ -5,11 +5,7 @@ import { connect } from "react-redux";
 import DesktopHomeComponent from "../../../component/homeComponent/desktop/desktop.home.component";
 
 function HomePage(props) {
-  return (
-    <div id="home-page">
-      <DesktopHomeComponent />
-    </div>
-  );
+  return <DesktopHomeComponent id="home-page" />;
 }
 
 const mapStateToProps = (state) => {

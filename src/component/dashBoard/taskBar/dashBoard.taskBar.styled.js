@@ -9,7 +9,7 @@ export const TaskBarParentDiv = styled.div`
   max-width: 200px;
   min-width: 150px;
   margin-top: 4%;
-  padding-top: 10px;
+  padding-top: 20px;
 `;
 
 export const TaskBarElementHolder = styled.div`

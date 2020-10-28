@@ -4,9 +4,18 @@ import { ReactComponent as barOwnerImage } from "../../assets/business-owner.svg
 import { ReactComponent as jar } from "../../assets/drink-beer-jar.svg";
 import { ReactComponent as merryMenImage } from "../../assets/merry-men.svg";
 
+export const AboutPage = styled.div`
+  width: 100vw;
+  height: ${(props) => (props.device !== "large" ? "120vh" : "100vh")};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const AboutPageParent = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 95%;
   display: flex;
   flex-direction: ${(props) => (props.device === "mobile" ? "column" : "row")};
 `;
@@ -18,9 +27,10 @@ export const BarOwnerImage = styled(barOwnerImage)`
 
 export const BarOwnerIntro = styled.div`
   width: 70%;
-  height: 40%;
+  height: ${(props) => (props.device === "mobile" ? "43%" : "40%")};
   display: flex;
   flex-direction: column;
+  padding-top: ${(props) => (props.device === "mobile" ? "1em" : "0em")};
 `;
 
 export const OwnerHeader = styled.div`
@@ -28,8 +38,8 @@ export const OwnerHeader = styled.div`
   align-items: center;
   justify-content: space-around;
   background-color: #ffba00;
-  width: 60%;
-  height: 20%;
+  width: ${(props) => (props.device === "mobile" ? "70%" : "50%")};
+  height: ${(props) => (props.device === "mobile" ? "30%" : "20%")};
   border-radius: 4px;
 `;
 
@@ -55,7 +65,7 @@ export const ClickHereToBegin = styled.p`
 `;
 
 export const ImageAndTextHolder = styled.div`
-  margin-left: 10%;
+  padding-left: 10%;
   margin-top: ${(props) => (props.device === "mobile" ? "10px" : "70px")};
   width: ${(props) => (props.device === "mobile" ? "100vw" : "50vw")};
   height: ${(props) => (props.device === "mobile" ? "50%" : "100%")};
@@ -71,9 +81,9 @@ export const MerryMenImage = styled(merryMenImage)`
 
 export const MerryMenIntro = styled.div`
   margin-right: 30%;
-  align-self: center;
   width: 70%;
-  height: 40%;
+  height: ${(props) => (props.device === "mobile" ? "43%" : "40%")};
   display: flex;
   flex-direction: column;
+  padding-top: ${(props) => (props.device === "mobile" ? "1em" : "0em")};
 `;

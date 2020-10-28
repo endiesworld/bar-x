@@ -1,67 +1,57 @@
 import styled from "styled-components";
 import { Link } from "react-scroll";
-import { ReactComponent as Mug } from "../../assets/beer-mug.svg";
+import Mug from "../../assets/beer-mug.svg";
 import { ReactComponent as X } from "../../assets/page-barx.svg";
 import { ReactComponent as jar } from "../../assets/drink-beer-jar.svg";
 
 export const HomePageParentDiv = styled.div`
   width: 100vw;
   height: 100vh;
+  background-color: #291563;
 `;
 
 export const HomePageBackground = styled.div`
-  background-color: #291563;
   width: 100vw;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  background: url(${Mug}) no-repeat center fixed;
+  background-size: 50vh 75vh;
 `;
 
-export const BarxAndBeerMugHolder = styled.div`
+export const ContentHolder = styled.div`
   width: 100vw;
   height: 93%;
   display: flex;
-  flex-direction: ${(props) => (props.device === "mobile" ? "column" : "row")};
+  flex-direction: column;
   justify-content: space-between;
 `;
-export const AboutBarxHolder = styled.div`
-  position: ${(props) => (props.device === "mobile" ? "absolute" : "relative")};
-  width: ${(props) => (props.device === "mobile" ? "100%" : "50%")};
-  height: ${(props) => (props.device === "mobile" ? "60%" : "100%")};
-  display: flex;
-  flex-direction: column;
-  justify-content: ${(props) =>
-    props.device === "mobile" ? "space-around" : "space-between"};
-  top: ${(props) => (props.device === "mobile" ? "10%" : "0%")};
-`;
+
 export const AboutBarx = styled.div`
-  position: relative;
-  top: 15%;
+  padding-top: 6em;
   width: 100%;
-  height: 55%;
+  height: ${(props) => (props.device === "mobile" ? "35%" : "50%")};
   display: flex;
   flex-direction: column;
 `;
 
 export const Barx = styled.div`
-  margin-top: 3%;
   width: 70%;
-  height: 15%;
+  height: 30%;
   display: flex;
   margin-left: 10%;
   align-items: center;
+  min-width: 300px;
 `;
 export const WriteBar = styled.h2`
   color: #ffffff;
-  font-family: Regular "Montserrat";
 `;
 
-export const XLogo = styled(X)``;
-export const Service = styled.p`
-  margin-left: 5%;
-  color: #ffffff;
+export const XLogo = styled(X)`
+  height: 70%;
+  margin-right: 1%;
 `;
 
 export const AboutTheCompany = styled.div`
@@ -70,42 +60,40 @@ export const AboutTheCompany = styled.div`
   width: 80%;
   height: 70%;
   margin-left: 10%;
+  min-width: 300px;
+`;
+
+export const BusinessOwnerAndMerryMen = styled.div`
+  display: flex;
+  flex-direction: ${(props) => (props.device === "mobile" ? "column" : "row")};
+  width: 100%;
+  height: ${(props) => (props.device === "mobile" ? "50%" : "30%")};
+  justify-content: space-around;
 `;
 
 export const Buttonholder = styled.div`
-  height: 20%;
-  width: 30%;
+  height: 30%;
+  width: 20%;
   min-width: 180px;
   text-decoration: none;
   cursor: pointer;
-  margin-bottom: 0.3%;
-`;
-
-export const BeerMugHolder = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: ${(props) => (props.device === "mobile" ? "100%" : "50%")};
-  height: 100%;
-`;
-
-export const BeerMug = styled(Mug)`
-  position: relative;
-  width: 75%;
-  height: 70%;
-  left: ${(props) => (props.device === "mobile" ? "10%" : "30%")};
-  top: 15%;
 `;
 
 export const BusinessOwner = styled.div`
-  position: relative;
-  left: 40%;
-  width: 55%;
-  height: 20%;
+  align-self: ${(props) =>
+    props.device === "mobile" ? "flex-start" : "center"};
+  width: ${(props) => (props.device === "mobile" ? "50%" : "30%")};
+  height: ${(props) => (props.device === "mobile" ? "50%" : "75%")};
+  min-width: 250px;
+  margin-left: 8%;
+  order: ${(props) => (props.device === "mobile" ? "2" : "1")};
+  -ms-flex-order: ${(props) => (props.device === "mobile" ? "2" : "1")};
 `;
 
 export const MerryMenHolder = styled(BusinessOwner)`
-  left: 10%;
+  align-self: ${(props) => (props.device === "mobile" ? "flex-end" : "center")};
+  -ms-flex-order: ${(props) => (props.device === "mobile" ? "1" : "2")};
+  order: ${(props) => (props.device === "mobile" ? "1" : "2")};
 `;
 
 export const Links = styled(Link)`
@@ -118,14 +106,15 @@ export const OwnerHeader = styled.div`
   justify-content: space-around;
   align-items: center;
   background-color: #ffba00;
-  width: 72%;
-  height: ${(props) => (props.device === "mobile" ? "23%" : "35%")};
+  min-width: 145px;
+  width: ${(props) => (props.device === "mobile" ? "80%" : "50%")};
+  height: ${(props) => (props.device === "mobile" ? "20%" : "20%")};
+  border-radius: 4px;
 `;
 
 export const BarOwner = styled.h2`
   font-size: 0.8rem;
   text-align: left;
-  font-family: "Montserrat";
   color: #291563;
 `;
 
@@ -136,7 +125,6 @@ export const Jar = styled(jar)`
 
 export const BarOwnerSolutio = styled.p`
   text-align: left;
-  font-family: "Montserrat";
   color: #fff;
   padding-right: 5px;
 `;

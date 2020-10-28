@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const HomeParentDiv = styled.div`
-  width: ${(props) => (props.deviceType !== "large" ? "auto" : "100%")};
+  width: ${(props) => (props.deviceType === "mobile" ? "100%" : "100%")};
 
-  height: auto;
+  height: ${(props) => (props.deviceType === "mobile" ? "100%" : "auto")};
   margin-bottom: 2em;
   margin-top: 5em;
   display: grid;
@@ -19,9 +19,9 @@ export const HomeParentDiv = styled.div`
 export const HomeChildrenDiv = styled.div`
   align-self: center;
   cursor: pointer;
-  width: ${(props) => (props.deviceType === "mobile" ? "80%" : "80%")};
-  max-width: 345px;
-  min-width: 300px;
+
+  width: 320px;
+
   min-height: 250px;
   box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
   :hover {
@@ -30,10 +30,9 @@ export const HomeChildrenDiv = styled.div`
   background: #f5f5f5;
 `;
 export const Board = styled.div`
-  /* background: green ; */
   margin-top: 1em;
   margin-left: 1em;
-  width: 92%;
+  width: 94%;
   min-height: 230px; ;
 `;
 export const DisplaySubject = styled.div`

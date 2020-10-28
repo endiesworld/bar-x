@@ -11,49 +11,47 @@ import {
   HomePageBackground,
   HomePageParentDiv,
   Links,
-  BarxAndBeerMugHolder,
+  ContentHolder,
   WriteBar,
-  AboutBarxHolder,
-  BeerMugHolder,
   AboutBarx,
   XLogo,
   BusinessOwner,
   Barx,
   AboutTheCompany,
   Buttonholder,
-  Service,
   MerryMenHolder,
-  BeerMug,
   Jar,
   OwnerHeader,
   BarOwner,
   BarOwnerSolutio,
+  BusinessOwnerAndMerryMen,
 } from "../home.component.style";
 
 function DesktopHomeComponent({ deviceType }) {
   return (
     <div id="home-page">
+      {console.log(deviceType)}
       <HomePageParentDiv>
         <HomePageBackground>
-          <BarxAndBeerMugHolder device={deviceType}>
-            <AboutBarxHolder device={deviceType}>
-              <AboutBarx>
-                <Barx>
-                  <WriteBar> Bar </WriteBar>
-                  <XLogo />
-                  <Service>Excellence in Service</Service>
-                </Barx>
-                <AboutTheCompany>
-                  <WhatWeDo />
-                  {deviceType !== "mobile" && (
-                    <Buttonholder>
-                      <SigninAndRegister color="#ffba00" />
-                    </Buttonholder>
-                  )}
-                </AboutTheCompany>
-              </AboutBarx>
-              <BusinessOwner>
-                <OwnerHeader>
+          <ContentHolder device={deviceType}>
+            <AboutBarx device={deviceType}>
+              <Barx>
+                <WriteBar> Bar- </WriteBar>
+                <XLogo />
+                <WriteBar>Excellence in Service</WriteBar>
+              </Barx>
+              <AboutTheCompany>
+                <WhatWeDo />
+                {deviceType !== "mobile" && (
+                  <Buttonholder>
+                    <SigninAndRegister color="#ffba00" />
+                  </Buttonholder>
+                )}
+              </AboutTheCompany>
+            </AboutBarx>
+            <BusinessOwnerAndMerryMen device={deviceType}>
+              <BusinessOwner device={deviceType}>
+                <OwnerHeader device={deviceType}>
                   <BarOwner> Dear Bar Owner</BarOwner>
                   <Jar />
                 </OwnerHeader>
@@ -63,9 +61,6 @@ function DesktopHomeComponent({ deviceType }) {
                   inventory becomes a huge task
                 </BarOwnerSolutio>
               </BusinessOwner>
-            </AboutBarxHolder>
-            <BeerMugHolder device={deviceType}>
-              <BeerMug device={deviceType} />
               <MerryMenHolder device={deviceType}>
                 <OwnerHeader device={deviceType}>
                   <BarOwner> Dear Merry Men</BarOwner>
@@ -76,8 +71,8 @@ function DesktopHomeComponent({ deviceType }) {
                   bills after, becomes a huge task
                 </BarOwnerSolutio>
               </MerryMenHolder>
-            </BeerMugHolder>
-          </BarxAndBeerMugHolder>
+            </BusinessOwnerAndMerryMen>
+          </ContentHolder>
           <Links to="about-page" smooth={true} duration={500}>
             <ButtonComponent text="Our Solutions" />
           </Links>

@@ -4,13 +4,13 @@ export const checkScreenSize = (mobileView, tabView, desktopView, loaded) => {
 
   const viewType = {
     mobile: () => mobileView(),
-    tab: () => tabView(),
+    medium: () => tabView(),
     large: () => desktopView(),
   };
 
   const device = {
     mobile: "mobile",
-    tab: "tab",
+    medium: "medium",
     large: "large",
   };
 
@@ -32,7 +32,7 @@ const checkScreen = (screenSize, device) => {
   if (screenSize < 661) {
     return device.mobile;
   } else if (screenSize > 661 && screenSize < 955) {
-    return device.tab;
+    return device.medium;
   } else if (screenSize > 955) {
     return device.large;
   }

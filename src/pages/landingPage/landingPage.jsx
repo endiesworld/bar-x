@@ -3,16 +3,15 @@ import React from "react";
 import NavbarPage from "./navbar/navbar.page";
 import HomePage from "./homePage/home.page";
 import AboutPage from "./aboutUsPage/about.page";
-import ContactPage from "./contactPage/contact.page";
+import { LandingPageParentDiv } from "./landingPage.styled";
 
 function LandingPage() {
   return (
-    <div id=" landing-page">
+    <LandingPageParentDiv id=" landing-page">
       <NavbarPage />
       <HomePage />
       <AboutPage />
-      <ContactPage />
-    </div>
+    </LandingPageParentDiv>
   );
 }
 
