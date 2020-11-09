@@ -25,7 +25,7 @@ function BarName({ deviceType, backgroundColor, name, textColor }) {
       <Text textColor={textColor}> {name || "company Name"} </Text>
       {deviceType !== "large" && (
         <TaskHolder taskBarState={taskBarState}>
-          <Taskbar width="150px" />
+          <Taskbar width="150px" background = {backgroundColor} textColor={textColor}/>
         </TaskHolder>
       )}
     </NameHolder>

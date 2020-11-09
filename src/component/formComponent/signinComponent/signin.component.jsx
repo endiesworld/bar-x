@@ -1,4 +1,5 @@
 import React from "react";
+import {useNavigate} from "react-router-dom";
 
 import { useFormik } from "formik";
 
@@ -23,8 +24,18 @@ function SigninComponent() {
     onSubmit,
   });
 
+  let navigate = useNavigate();
+
+  
+
+ const submitHandler = async () => {
+   await formik.handleSubmit() ;
+   navigate('/dashboard', { replace: true });
+ }
+ 
+
   return (
-    <Form onSubmit={formik.handleSubmit}>
+    <Form onSubmit={submitHandler}>
       {signinFormFields.map((element, index) => (
         <GroupElement key={index}>
           <Label>{element.label} </Label>
@@ -32,6 +43,7 @@ function SigninComponent() {
             placeholder={element.placeHolder}
             type={element.inputType}
             required
+            autoComplete= "on"
             name={element.name}
             id={element.name}
             onChange={formik.handleChange}
@@ -41,6 +53,7 @@ function SigninComponent() {
       ))}
       <GroupElement>
         <SubmitBotton type="submit"> Signin</SubmitBotton>
+        
       </GroupElement>
     </Form>
   );

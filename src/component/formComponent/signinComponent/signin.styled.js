@@ -22,14 +22,14 @@ export const Label = styled.label`
   color: #291563;
   margin-top: 0.2em;
   font-size: 13px;
+  margin-right: 0.5em;
 `;
 
 export const GroupElement = styled.div`
   margin-top: 0.5em;
   height: 3em;
-  width: 12em;
+  width: 15em;
   display: flex;
-  flex-direction: column;
   align-items: flex-start;
   justify-content: center;
 `;
@@ -38,8 +38,9 @@ export const SubmitBotton = styled.button`
   background-color: #291563;
   color: #ffffff;
   font-size: 13px;
-  width: 8.5em;
+  width: 100px;
   border: 1px solid #291563;
   border-radius: 4px;
   height: 2em;
+  margin-right: 0.5em;
 `;

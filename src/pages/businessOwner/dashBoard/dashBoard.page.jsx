@@ -5,7 +5,11 @@ import Navbar from "../../../component/navbarComponent/desktop/desktop.navbar.co
 import DashBoardWorkSpace from "../../../component/dashBoard/dashBoard.component";
 import { connect } from "react-redux";
 
-function DashBoard({ deviceType }) {
+
+function DashBoard({ deviceType, user }) {
+
+console.log("the signed in user is: ", user)
+
   return (
     <div>
       <DashBoardParentDiv deviceType={deviceType}>
@@ -17,8 +21,8 @@ function DashBoard({ deviceType }) {
 }
 
 const mapStateToProps = (state) => {
-  const { deviceType } = state.deviceType;
-  return { deviceType };
+  const { deviceType, user } = state;
+    return { deviceType, user};
 };
 
 export default connect(mapStateToProps)(DashBoard);

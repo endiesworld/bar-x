@@ -5,7 +5,7 @@ export const TaskBarParentDiv = styled.div`
   background-color: ${(props) => props.background || "#ffffff"};
   height: 100vh;
   width: ${(props) => props.width || "20%"};
-  color: #291563;
+  
   max-width: 200px;
   min-width: 150px;
   margin-top: 4%;
@@ -15,12 +15,14 @@ export const TaskBarParentDiv = styled.div`
 export const TaskBarElementHolder = styled.div`
   height: 10%;
   width: 100%;
+  color: ${(props) => props.color };
   display: flex;
   align-items: center;
   padding-left: 10%;
   cursor: pointer;
   :hover {
     background-color: #ffba00;
+    color: #291563;
   }
 `;
 

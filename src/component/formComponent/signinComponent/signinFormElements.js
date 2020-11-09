@@ -1,3 +1,5 @@
+import {signIn}  from "../../../firebase/firebase.util.store" ;
+
 const email = {
   label: "Email",
   name: "email",
@@ -20,7 +22,8 @@ export const initialValues = {
 };
 
 export const onSubmit = (values) => {
-  alert(JSON.stringify(values, null, 2));
-  console.log("form data are, ", values);
-  // console.log("errors in the form you submited are, ", errors.password);
+  let userDetails = JSON.stringify(values, null, 2);
+  userDetails = JSON.parse(userDetails) ;
+  signIn(userDetails.email, userDetails.password) ;
+  
 };

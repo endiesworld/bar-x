@@ -19,10 +19,9 @@ export const Text = styled.h2`
 export const TaskHolder = styled.div`
   border-radius: 4px;
   display: ${(props) => props.taskBarState};
-  width: 56%;
+  
   height: 600px;
   position: absolute;
-  margin-top: 36em;
-  margin-left: 3em;
-  background: #f5f5f5;
+  margin-top: 35em;
+  
 `;

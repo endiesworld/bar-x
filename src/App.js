@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {  useEffect} from "react";
 import { Routes, Route } from "react-router-dom";
 import DashBoard from "./pages/businessOwner/dashBoard/dashBoard.page";
 
@@ -10,14 +10,25 @@ import {
   loadTabView,
 } from "./redux/deviceType/deviceType.action";
 
+import {loadUser} from "./redux/user/user.action";
+
 import LandingPage from "./pages/landingPage/landingPage";
 import SignUpPage from "./pages/signUpPage/signUp.page";
 import SigninPage from "./pages/signinPage/signin.page";
 import { checkScreenSize } from "./screenTypes/deviceTypeSelector";
 import "./App.css";
+import {auth} from "./firebase/firebase.util.store"
 
-function App({ desktopView, mobileView, tabView, deviceType }) {
+function App({ desktopView, mobileView, tabView, deviceType, barxUser }) {
+  
   checkScreenSize(mobileView, tabView, desktopView, deviceType);
+
+  useEffect(() => {
+     let unsub = auth.onAuthStateChanged(user => {barxUser(user)}) ;
+    return () => {
+      unsub() ;
+    }
+  })
 
   const checkNewScreenSize = () => {
     checkScreenSize(mobileView, tabView, desktopView, deviceType);
@@ -26,7 +37,7 @@ function App({ desktopView, mobileView, tabView, deviceType }) {
     window.addEventListener("resize", checkNewScreenSize);
   });
 
-  return (
+return (
     <div className="app">
       <Routes>
         <Route path="/" element={<LandingPage />} />
@@ -48,6 +59,7 @@ const mapDispatchToProps = (dispatch) => {
     mobileView: () => dispatch(loadMobileView()),
     desktopView: () => dispatch(loadDesktopView()),
     tabView: () => dispatch(loadTabView()),
+    barxUser: (user) => dispatch(loadUser(user)),
   };
 };
 

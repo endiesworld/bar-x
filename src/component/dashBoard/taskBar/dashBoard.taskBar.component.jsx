@@ -4,13 +4,13 @@ import {
   TaskBarElementHolder,
   Link,
 } from "./dashBoard.taskBar.styled";
-import { dashBoardProperties, BusinessElement } from "../dashBoardTools";
-import "../dashboard.css";
+import { BusinessElement } from "../dashBoardTools";
+import SignOut from "../../signOut/signOut.component"
 
 function TaskBar(props) {
   return (
     <TaskBarParentDiv
-      background={props.background || dashBoardProperties.background}
+      background={props.background }
       width={props.width}
     >
       {BusinessElement.map((element) => (
@@ -23,11 +23,12 @@ function TaskBar(props) {
           to={element.id}
           key={element.id}
         >
-          <TaskBarElementHolder key={element.id}>
+          <TaskBarElementHolder color = {props.textColor} key={element.id}>
             {element.icon} {element.text}
           </TaskBarElementHolder>
         </Link>
       ))}
+      <SignOut />
     </TaskBarParentDiv>
   );
 }

@@ -1,3 +1,6 @@
+
+import {signUp}  from "../../../firebase/firebase.util.store" ;
+
 const state = {
   label: "State",
   name: "state",
@@ -50,6 +53,13 @@ const barName = {
   placeHolder: "Enter the label of your bar",
 };
 
+const mobileNumber = {
+  label: "Contact No.",
+  inputType: "tel",
+  name: "mobileNumber",
+  placeHolder: "Enter the contact number",
+};
+
 const city = {
   label: "City",
   name: "city",
@@ -90,6 +100,7 @@ export const signupFormFields = [
   state,
   city,
   address,
+  mobileNumber,
   email,
   password,
   confirmPassword,
@@ -100,16 +111,24 @@ export const initialValues = {
   state: "",
   city: "",
   address: "",
+  mobileNumber: "" ,
   password: "",
   confirmPassword: "",
   email: "",
 };
 
 export const onSubmit = (values) => {
-  alert(JSON.stringify(values, null, 2));
-  console.log("form data are, ", values);
-  // console.log("errors in the form you submited are, ", errors.password);
+  let newUserDetails = JSON.stringify(values, null, 2);
+  newUserDetails = JSON.parse(newUserDetails) ;
+  signUp(newUserDetails.email, newUserDetails.password) ;
+ 
+  
 };
+
+
+
+
+ 
 
 export const validate = (values) => {
   let errors = {};

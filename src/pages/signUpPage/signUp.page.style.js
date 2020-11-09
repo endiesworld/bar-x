@@ -12,7 +12,7 @@ export const SignUpParent = styled.div`
 
 export const WhatWeDoSection = styled.section`
   width: ${(props) => (props.device === "mobile" ? "100%" : "35%")};
-  height: ${(props) => (props.device === "mobile" ? "35%" : "90%")};
+  height: ${(props) => (props.device === "mobile" ? "35%" : "95%")};
   background-color: #291563;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@ export const WhatWeDoSection = styled.section`
 
 export const FormSection = styled.section`
   width: ${(props) => (props.device === "mobile" ? "100%" : "35%")};
-  height: ${(props) => (props.device === "mobile" ? "65%" : "90%")};
+  height: ${(props) => (props.device === "mobile" ? "65%" : "95%")};
   background-color: #ffffff;
 `;
 

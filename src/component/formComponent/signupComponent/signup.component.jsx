@@ -1,6 +1,8 @@
 import React from "react";
 
 import { useFormik } from "formik";
+import { useNavigate } from 'react-router-dom';
+
 
 import {
   Form,
@@ -11,7 +13,7 @@ import {
   SubmitBotton,
   Strength,
 } from "./signup.style";
-//import ButtonComponent from "../../registerButton/registerButton.component";
+
 
 import {
   signupFormFields,
@@ -22,14 +24,23 @@ import {
 } from "./signupFormElement";
 
 function SignUpComponent() {
+  let navigate = useNavigate();
+
   const formik = useFormik({
     initialValues,
     onSubmit,
     validate,
   });
 
+ const submitHandler = async () => {
+   await formik.handleSubmit() ;
+   navigate('/dashboard', { replace: true });
+ }
+ 
+
   return (
-    <Form onSubmit={formik.handleSubmit}>
+    
+    <Form onSubmit={submitHandler}>
       {signupFormFields.map((element, index) => (
         <GroupElement key={index}>
           <Label>
@@ -63,6 +74,7 @@ function SignUpComponent() {
               placeholder={element.placeHolder}
               type={element.inputType}
               required
+              autoComplete= "on"
               name={element.name}
               id={element.name}
               onChange={formik.handleChange}
