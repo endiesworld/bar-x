@@ -1,9 +1,9 @@
 const INIT_STATE = {
-  user: false,
+  user: "LOADING",
 };
 
 const userReducer = (state = INIT_STATE, action) => {
-    switch (action.type) {
+      switch (action.type) {
       case "USER":
       return {
         ...state,

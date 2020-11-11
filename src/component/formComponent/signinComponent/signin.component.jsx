@@ -1,5 +1,8 @@
 import React from "react";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Navigate} from "react-router-dom";
+import { connect } from "react-redux";
+import LoadingPage from "../../loading/loading.component" ;
+//import {auth} from "../../../firebase/firebase.util.store"
 
 import { useFormik } from "formik";
 
@@ -18,21 +21,27 @@ import {
   onSubmit,
 } from "./signinFormElements";
 
-function SigninComponent() {
-  const formik = useFormik({
+function SigninComponent({  user }) {
+
+ let navigate = useNavigate();
+
+ const formik = useFormik({
     initialValues,
     onSubmit,
   });
 
-  let navigate = useNavigate();
-
-  
-
- const submitHandler = async () => {
-   await formik.handleSubmit() ;
-   navigate('/dashboard', { replace: true });
+ const submitHandler = () => {
+  formik.handleSubmit() ;
+  return (user) ? navigate('/dashboard', { replace: true }) : "";
  }
  
+ if( !(user.user === "LOADING" || user.user === null)) {
+   return <Navigate to = '/dashboard' />
+ }
+
+ if( user.user === "LOADING") {
+   return <LoadingPage />
+ }
 
   return (
     <Form onSubmit={submitHandler}>
@@ -53,10 +62,16 @@ function SigninComponent() {
       ))}
       <GroupElement>
         <SubmitBotton type="submit"> Signin</SubmitBotton>
-        
       </GroupElement>
     </Form>
   );
 }
 
-export default SigninComponent;
+
+const mapStateToProps = (state) => {
+  const { user } = state;
+    return {user};
+};
+
+
+export default connect(mapStateToProps)(SigninComponent);

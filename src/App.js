@@ -1,4 +1,4 @@
-import React, {  useEffect} from "react";
+import React, { useEffect} from "react";
 import { Routes, Route } from "react-router-dom";
 import DashBoard from "./pages/businessOwner/dashBoard/dashBoard.page";
 
@@ -19,12 +19,13 @@ import { checkScreenSize } from "./screenTypes/deviceTypeSelector";
 import "./App.css";
 import {auth} from "./firebase/firebase.util.store"
 
-function App({ desktopView, mobileView, tabView, deviceType, barxUser }) {
+function App({ desktopView, mobileView, tabView, deviceType, barxUser}) {
   
   checkScreenSize(mobileView, tabView, desktopView, deviceType);
 
   useEffect(() => {
-     let unsub = auth.onAuthStateChanged(user => {barxUser(user)}) ;
+     let unsub = auth.onAuthStateChanged(user => {       
+      barxUser(user)}) ;
     return () => {
       unsub() ;
     }
@@ -51,7 +52,7 @@ return (
 
 const mapStateToProps = (state) => {
   const { deviceType } = state.deviceType;
-  return { deviceType };
+    return { deviceType};
 };
 
 const mapDispatchToProps = (dispatch) => {

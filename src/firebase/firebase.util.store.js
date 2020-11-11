@@ -35,7 +35,7 @@ import "firebase/firestore";
    // ...
 });
 
- export const signIn = (email, password) => auth.signInWithEmailAndPassword(email, password)
+ export const signIn = (email, password) =>  auth.signInWithEmailAndPassword(email, password)
  .catch(function(error) {
   // Handle Errors here.
   console.log("sign in error", error.code );
