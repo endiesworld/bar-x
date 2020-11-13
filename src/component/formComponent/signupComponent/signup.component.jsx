@@ -1,7 +1,9 @@
 import React from "react";
 
 import { useFormik } from "formik";
-import { useNavigate } from 'react-router-dom';
+import {  Navigate } from 'react-router-dom';
+import LoadingPage from "../../loading/loading.component" ;
+import { connect } from "react-redux";
 
 
 import {
@@ -23,24 +25,28 @@ import {
   passwordProperties,
 } from "./signupFormElement";
 
-function SignUpComponent() {
-  let navigate = useNavigate();
-
+function SignUpComponent( {user}) {
+  
   const formik = useFormik({
     initialValues,
     onSubmit,
     validate,
   });
 
- const submitHandler = async () => {
-   await formik.handleSubmit() ;
-   navigate('/dashboard', { replace: true });
- }
  
+ 
+if( !(user.user === "LOADING" || user.user === null)) {
+   return <Navigate to = '/dashboard' />
+ }
+
+ if( user.user === "LOADING") {
+   return <LoadingPage />
+ }
+
 
   return (
     
-    <Form onSubmit={submitHandler}>
+    <Form onSubmit={formik.handleSubmit}>
       {signupFormFields.map((element, index) => (
         <GroupElement key={index}>
           <Label>
@@ -100,4 +106,11 @@ function SignUpComponent() {
   );
 }
 
-export default SignUpComponent;
+
+const mapStateToProps = (state) => {
+  const { user } = state;
+    return {user};
+};
+
+
+export default connect(mapStateToProps)(SignUpComponent);

@@ -120,7 +120,7 @@ export const initialValues = {
 export const onSubmit = (values) => {
   let newUserDetails = JSON.stringify(values, null, 2);
   newUserDetails = JSON.parse(newUserDetails) ;
-  signUp(newUserDetails.email, newUserDetails.password) ;
+  signUp(newUserDetails) ;
  
   
 };

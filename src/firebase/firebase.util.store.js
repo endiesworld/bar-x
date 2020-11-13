@@ -1,7 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
-
+import {createNewUserProfile} from "./newUserProfile"
 // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   var firebaseConfig = {
@@ -22,24 +22,26 @@ import "firebase/firestore";
 
   export const auth = firebase.auth() ;
   export const firestore = firebase.firestore() ;
+  
 
   const provider = new firebase.auth.GoogleAuthProvider();
   provider.setCustomParameters({'login_hint': 'user@example.com'});
   //export const googleSigninWithRedirect = () => auth.signInWithRedirect(provider);
   //export const googleSigninWithPupup = () => auth.signInWithPopup(provider);
-  export const signUp = (email, password) => auth.createUserWithEmailAndPassword(email, password)
+  export const signUp = async (newUserDetails) => {
+    await auth.createUserWithEmailAndPassword(newUserDetails.email, newUserDetails.password)
+    .then( (response) => createNewUserProfile(newUserDetails,firestore, response.user) )
   .catch(function(error) {
   // Handle Errors here.
-  console.log("sign up error", error.code );
-    console.log("sign up error", error.message );
+    alert("Unable to sign you up, email already in use by another user") ;
    // ...
 });
-
+ 
+  }
  export const signIn = (email, password) =>  auth.signInWithEmailAndPassword(email, password)
  .catch(function(error) {
   // Handle Errors here.
-  console.log("sign in error", error.code );
-    console.log("sign in error", error.message );
+  alert("User name or password does not exist") ;
   // ...
 });
 

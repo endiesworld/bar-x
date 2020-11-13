@@ -1,10 +1,9 @@
 import React from "react";
-import {useNavigate, Navigate} from "react-router-dom";
+import {Navigate} from "react-router-dom";
 import { connect } from "react-redux";
 import LoadingPage from "../../loading/loading.component" ;
-//import {auth} from "../../../firebase/firebase.util.store"
-
 import { useFormik } from "formik";
+
 
 import {
   Form,
@@ -12,8 +11,10 @@ import {
   Label,
   Input,
   SubmitBotton,
+  DontHaveAccount,
+  Register,
+  Link
 } from "./signin.styled";
-//import ButtonComponent from "../../registerButton/registerButton.component";
 
 import {
   signinFormFields,
@@ -22,18 +23,11 @@ import {
 } from "./signinFormElements";
 
 function SigninComponent({  user }) {
-
- let navigate = useNavigate();
-
- const formik = useFormik({
+  
+  const formik = useFormik({
     initialValues,
     onSubmit,
   });
-
- const submitHandler = () => {
-  formik.handleSubmit() ;
-  return (user) ? navigate('/dashboard', { replace: true }) : "";
- }
  
  if( !(user.user === "LOADING" || user.user === null)) {
    return <Navigate to = '/dashboard' />
@@ -44,7 +38,8 @@ function SigninComponent({  user }) {
  }
 
   return (
-    <Form onSubmit={submitHandler}>
+    <>
+    <Form onSubmit={formik.handleSubmit}>
       {signinFormFields.map((element, index) => (
         <GroupElement key={index}>
           <Label>{element.label} </Label>
@@ -63,7 +58,17 @@ function SigninComponent({  user }) {
       <GroupElement>
         <SubmitBotton type="submit"> Signin</SubmitBotton>
       </GroupElement>
+      <DontHaveAccount >
+        <Register >
+          You don't have an account ? 
+        </Register>
+        <Link to="/signup">
+          <Register> sign up </Register>
+        </Link>
+      </DontHaveAccount >
     </Form>
+    
+    </>
   );
 }
 

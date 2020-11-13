@@ -17,20 +17,25 @@ import SignUpPage from "./pages/signUpPage/signUp.page";
 import SigninPage from "./pages/signinPage/signin.page";
 import { checkScreenSize } from "./screenTypes/deviceTypeSelector";
 import "./App.css";
-import {auth} from "./firebase/firebase.util.store"
+import {auth, firestore} from "./firebase/firebase.util.store" ;
+import {getBarDetails} from "./firebase/newUserProfile"
 
 function App({ desktopView, mobileView, tabView, deviceType, barxUser}) {
   
   checkScreenSize(mobileView, tabView, desktopView, deviceType);
-
-  useEffect(() => {
-     let unsub = auth.onAuthStateChanged(user => {       
-      barxUser(user)}) ;
+    useEffect( () => {
+     let unsub = auth.onAuthStateChanged( async (user) => {  
+       if (user) { 
+          await getBarDetails(firestore, user).then((userRef) => barxUser(userRef.data().barDetails) )
+        } 
+        else {
+          barxUser(user) ;
+        }
+       } )
     return () => {
       unsub() ;
     }
-  })
-
+  });
   const checkNewScreenSize = () => {
     checkScreenSize(mobileView, tabView, desktopView, deviceType);
   };

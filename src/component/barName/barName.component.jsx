@@ -4,7 +4,8 @@ import { NameHolder, Text, TaskHolder } from "./barName.styled";
 import Taskbar from "../dashBoard/taskBar/dashBoard.taskBar.component";
 import { connect } from "react-redux";
 
-function BarName({ deviceType, backgroundColor, name, textColor }) {
+function BarName({ deviceType, backgroundColor, user, textColor }) {
+ const {barName} = user.user ;
   const taskBar = {
     mobileView: "block",
     wideScreen: "none",
@@ -22,7 +23,7 @@ function BarName({ deviceType, backgroundColor, name, textColor }) {
 
   return (
     <NameHolder backgroundColor={backgroundColor} onClick={() => flipTaskBar()}>
-      <Text textColor={textColor}> {name || "company Name"} </Text>
+      <Text textColor={textColor}> { barName ||  "company Name"}</Text>
       {deviceType !== "large" && (
         <TaskHolder taskBarState={taskBarState}>
           <Taskbar width="150px" background = {backgroundColor} textColor={textColor}/>
@@ -33,8 +34,8 @@ function BarName({ deviceType, backgroundColor, name, textColor }) {
 }
 
 const mapStateToProps = (state) => {
-  const { deviceType } = state.deviceType;
-  return { deviceType };
+  const { deviceType , user} = state ;
+  return { deviceType, user };
 };
 
 export default connect(mapStateToProps)(BarName);
