@@ -29,9 +29,9 @@ function App({ desktopView, mobileView, tabView, deviceType, barxUser}) {
          await getBarDetails(firestore, user)
          .then((userRef) => ( userRef.data().barDetails) ? barxUser(userRef.data().barDetails) : barxUser(user) ) ;
          }
-        else 
+        else {
           barxUser(user) ;
-        
+        }
        } )
     return () => {
       unsub() ;

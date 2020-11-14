@@ -3,7 +3,7 @@ export const createNewUserProfile = async (newUserdetails, fireStore, firebaseAu
     const {barName, state, city, address, mobileNumber} = newUserdetails ;
     const {uid, email} = firebaseAuthDetails ;
     const createdOn = new Date() ;
-   const barprofile  = { barDetails : {barName, email, state, city, address, mobileNumber, createdOn} }
+   const barprofile  = { barDetails : {barName, email, state, city, address, mobileNumber, createdOn} } ;
 
   try { 
       await  fireStore.doc(`bars/${uid}`).set( barprofile );
