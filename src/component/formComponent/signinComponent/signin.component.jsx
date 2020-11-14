@@ -30,11 +30,11 @@ function SigninComponent({  user }) {
   });
  
  if( !(user.user === "LOADING" || user.user === null)) {
-   return <Navigate to = '/dashboard' />
+   return <Navigate to = '/dashboard' /> ;
  }
 
  if( user.user === "LOADING") {
-   return <LoadingPage />
+   return <LoadingPage /> ;
  }
 
   return (

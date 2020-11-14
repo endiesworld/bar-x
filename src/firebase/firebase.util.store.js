@@ -1,7 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
-import {createNewUserProfile} from "./newUserProfile"
+import {createNewUserProfile} from "./newUserProfile" ;
 // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   var firebaseConfig = {
@@ -37,7 +37,7 @@ import {createNewUserProfile} from "./newUserProfile"
    // ...
 });
  
-  }
+  } ;
  export const signIn = (email, password) =>  auth.signInWithEmailAndPassword(email, password)
  .catch(function(error) {
   // Handle Errors here.
