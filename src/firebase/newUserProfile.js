@@ -6,7 +6,7 @@ export const createNewUserProfile = async (newUserdetails, fireStore, firebaseAu
    const barprofile  = { barDetails : {barName, email, state, city, address, mobileNumber, createdOn} } ;
 
   try { 
-      await  fireStore.doc(`bars/${uid}`).set( barprofile );
+      await  fireStore.doc(`bars/${uid}`).set( barprofile ) ;
  } catch (error) {
       alert(`could not update new user profile and ${error}` ) ;
   }
