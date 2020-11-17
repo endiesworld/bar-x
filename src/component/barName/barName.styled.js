@@ -9,6 +9,7 @@ export const NameHolder = styled.div`
   justify-content: center;
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height || "100%"};
+  
 `;
 
 export const Text = styled.h2`
@@ -24,7 +25,8 @@ export const TaskHolder = styled.div`
   display: ${(props) => props.taskBarState};
   
   height: 600px;
-  position: absolute;
-  margin-top: 35em;
+position: absolute ;
+top: 70% ;
+
   
 `;

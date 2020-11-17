@@ -10,6 +10,7 @@ import {  Navigate } from 'react-router-dom';
 
 function DashBoard({ deviceType, user }) {
  
+ 
   return (
     <>
      {(user.user) ? (     
