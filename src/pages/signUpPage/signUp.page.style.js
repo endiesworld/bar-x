@@ -22,7 +22,7 @@ export const WhatWeDoSection = styled.section`
 
 export const FormSection = styled.section`
   width: ${(props) => (props.device === "mobile" ? "100%" : "35%")};
-  height: ${(props) => (props.device === "mobile" ? "65%" : "95%")};
+  height: ${(props) => (props.device === "mobile" ? "625px" : "95%")};
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
