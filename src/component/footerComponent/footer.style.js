@@ -3,19 +3,18 @@ import { ReactComponent as cee } from "../../assets/copyright.svg";
 
 export const FooterHolder = styled.div`
   display: flex;
-  align-self: center;
+  height: 10%;
   align-items: center;
-  height: 100%;
+  justify-content: center;
 `;
 
 export const CopyRightIcon = styled(cee)`
-  width: 25px;
+  width: 20px;
   color: ${(props) => props.color};
 `;
 
 export const CopyRightText = styled.p`
   margin-left: 5px;
   text-align: left;
-  font-family: "Montserrat";
   color: ${(props) => props.color || "#291563"};
 `;

@@ -24,6 +24,10 @@ export const FormSection = styled.section`
   width: ${(props) => (props.device === "mobile" ? "100%" : "35%")};
   height: ${(props) => (props.device === "mobile" ? "65%" : "95%")};
   background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const BarXholder = styled.div`
