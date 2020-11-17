@@ -10,12 +10,13 @@ export const AboutPage = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 `;
 
 export const AboutPageParent = styled.div`
+
   width: 100vw;
-  height: 95%;
+  height: 90%;
   display: flex;
   flex-direction: ${(props) => (props.device === "mobile" ? "column" : "row")};
 `;
@@ -27,10 +28,9 @@ export const BarOwnerImage = styled(barOwnerImage)`
 
 export const BarOwnerIntro = styled.div`
   width: 70%;
-  height: ${(props) => (props.device === "mobile" ? "43%" : "40%")};
+  height: 40%;
   display: flex;
   flex-direction: column;
-  padding-top: ${(props) => (props.device === "mobile" ? "1em" : "0em")};
 `;
 
 export const OwnerHeader = styled.div`
@@ -79,11 +79,6 @@ export const MerryMenImage = styled(merryMenImage)`
   margin-right: 30%;
 `;
 
-export const MerryMenIntro = styled.div`
+export const MerryMenIntro = styled(BarOwnerIntro)`
   margin-right: 30%;
-  width: 70%;
-  height: ${(props) => (props.device === "mobile" ? "43%" : "40%")};
-  display: flex;
-  flex-direction: column;
-  padding-top: ${(props) => (props.device === "mobile" ? "1em" : "0em")};
 `;
