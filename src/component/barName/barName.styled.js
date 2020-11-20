@@ -23,10 +23,7 @@ width: auto ;
 export const TaskHolder = styled.div`
   border-radius: 4px;
   display: ${(props) => props.taskBarState};
-  
   height: 600px;
 position: absolute ;
 top: 70% ;
-
-  
 `;

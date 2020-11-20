@@ -9,16 +9,16 @@ import {
   SignUpParent,
   WhatWeDoSection,
   FormSection,
-  BeerMug,
+  Mugholder
 } from "./signin.page.style";
 
 function SigninPage({ deviceType }) {
   return (
     <div id="signin-page">
       <SignUpParent device={deviceType}>
-        <WhatWeDoSection device={deviceType}>
-          <BeerMug />
-        </WhatWeDoSection>
+        <WhatWeDoSection device={deviceType} >
+          <Mugholder />
+         </WhatWeDoSection> 
         <FormSection device={deviceType}>
           <SigninComponent />
           <Footer iconColor="#291563" textColor="#291563" />

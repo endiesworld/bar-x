@@ -16,7 +16,6 @@ import SignUpComponent from "../../component/formComponent/signupComponent/signu
 
 function SignUpPage({ deviceType }) {
   return (
-    <div id="signup-page">
       <SignUpParent device={deviceType}>
         <WhatWeDoSection device={deviceType}>
           <BarXholder>
@@ -29,7 +28,6 @@ function SignUpPage({ deviceType }) {
           <Footer iconColor="#291563" textColor="#291563" />
         </FormSection>
       </SignUpParent>
-    </div>
   );
 }
 

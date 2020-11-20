@@ -5,8 +5,9 @@ import { ReactComponent as jar } from "../../assets/drink-beer-jar.svg";
 import { ReactComponent as merryMenImage } from "../../assets/merry-men.svg";
 
 export const AboutPage = styled.div`
+background-color: green ;
   width: 100vw;
-  height: ${(props) => (props.device !== "large" ? "120vh" : "100vh")};
+  height: ${(props) => (props.device !== "large" ? "120vh" : "630px")};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,7 +15,6 @@ export const AboutPage = styled.div`
 `;
 
 export const AboutPageParent = styled.div`
-
   width: 100vw;
   height: 90%;
   display: flex;
@@ -38,8 +38,8 @@ export const OwnerHeader = styled.div`
   align-items: center;
   justify-content: space-around;
   background-color: #ffba00;
-  width: ${(props) => (props.device === "mobile" ? "70%" : "50%")};
-  height: ${(props) => (props.device === "mobile" ? "30%" : "20%")};
+  width: 200px;
+  height: 40px;
   border-radius: 4px;
 `;
 

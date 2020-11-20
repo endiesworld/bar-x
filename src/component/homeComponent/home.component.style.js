@@ -6,7 +6,8 @@ import { ReactComponent as jar } from "../../assets/drink-beer-jar.svg";
 
 export const HomePageParentDiv = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: ${(props) => (props.device === "mobile" ? "670px" : "630px")};
+ 
   background-color: #291563;
 `;
 
@@ -18,7 +19,7 @@ export const HomePageBackground = styled.div`
   align-items: center;
   justify-content: space-around;
   background: url(${Mug}) no-repeat center fixed;
-  background-size: 50vh 75vh;
+  background-size: 50% 75%;
 `;
 
 export const ContentHolder = styled.div`
@@ -107,8 +108,8 @@ export const OwnerHeader = styled.div`
   align-items: center;
   background-color: #ffba00;
   min-width: 145px;
-  width: ${(props) => (props.device === "mobile" ? "80%" : "50%")};
-  height: ${(props) => (props.device === "mobile" ? "20%" : "20%")};
+ width: 200px;
+  height: 40px;
   border-radius: 4px;
 `;
 

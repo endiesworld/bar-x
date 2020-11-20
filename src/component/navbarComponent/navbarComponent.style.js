@@ -9,7 +9,7 @@ export const Navbar = styled.nav`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 10vh;
+  height: 50px;
   background-color: ${(props) => props.backgroundColor || "#ffffff"};
   z-index: 1;
 `;
@@ -28,17 +28,16 @@ export const Links = styled(Link)`
 `;
 
 export const Xlogo = styled(xlogo)`
-  height: 7vh;
+  height: 40px;
   margin-top: 5px;
   margin-left: 5%;
 `;
 
 export const Buttonholder = styled.div`
   height: 70%;
-  width: 15%;
+  width: ${(props) => (props.deviceType !== "large" ? "20%" : "15%")}; ;
   min-width: 150px;
   text-decoration: none;
   cursor: pointer;
-  margin-right: ${(props) => (props.deviceType === "mobile" ? "8%" : "3%")};
-  margin-bottom: 0.3%;
-`;
+  margin-right: ${(props) => (props.deviceType !== "large" ? "" : "3%")};
+ `;

@@ -30,7 +30,6 @@ import {
 function DesktopHomeComponent({ deviceType }) {
   return (
     <div id="home-page">
-      {console.log(deviceType)}
       <HomePageParentDiv>
         <HomePageBackground>
           <ContentHolder device={deviceType}>
