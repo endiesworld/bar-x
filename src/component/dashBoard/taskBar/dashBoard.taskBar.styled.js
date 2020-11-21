@@ -29,3 +29,10 @@ export const TaskBarElementHolder = styled.div`
 export const Link = styled(NavLink)`
   text-decoration-line: none;
 `;
+
+export const TaskBarCloser = styled.div`
+cursor: pointer ;
+padding-left: 120px ;
+font-size:20px;
+color:  #ffba00;
+` ;

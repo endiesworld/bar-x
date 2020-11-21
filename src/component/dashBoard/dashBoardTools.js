@@ -10,6 +10,7 @@ export const dashBoardProperties = {
 
 const home = {
   id: "home",
+  linkTo: "" ,
   icon: (
     <span role="img" aria-label="home">
       {" "}
@@ -26,6 +27,7 @@ const home = {
 
 const inventory = {
   id: "inventory",
+  linkTo: "inventory" ,
   icon: (
     <span role="img" aria-label="folder">
       {" "}
@@ -41,6 +43,7 @@ const inventory = {
 
 const itemsMenue = {
   id: "itemsMenue",
+   linkTo: "itemsMenue" ,
   icon: (
     <span role="img" aria-label="menue">
       📋{" "}
@@ -55,6 +58,7 @@ const itemsMenue = {
 
 const management = {
   id: "management",
+  linkTo: "management" ,
   icon: (
     <span role="img" aria-label="management">
       {" "}
@@ -70,6 +74,7 @@ const management = {
 
 const dailyOps = {
   id: "dailyOps",
+  linkTo: "dailyOps" ,
   icon: (
     <span role="img" aria-label="management">
       {" "}

@@ -5,7 +5,6 @@ import { ReactComponent as jar } from "../../assets/drink-beer-jar.svg";
 import { ReactComponent as merryMenImage } from "../../assets/merry-men.svg";
 
 export const AboutPage = styled.div`
-background-color: green ;
   width: 100vw;
   height: ${(props) => (props.device !== "large" ? "120vh" : "630px")};
   display: flex;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const NameHolder = styled.div`
-
+  position: relative ;
   background: ${(props) => props.backgroundColor || "#ffffff"};
   border-radius: 4px;
   display: flex;
@@ -21,9 +21,12 @@ width: auto ;
 `;
 
 export const TaskHolder = styled.div`
+width: 100% ;
   border-radius: 4px;
   display: ${(props) => props.taskBarState};
   height: 600px;
 position: absolute ;
-top: 70% ;
+top: 75% ;
 `;
+
+

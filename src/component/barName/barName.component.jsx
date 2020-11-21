@@ -5,6 +5,7 @@ import Taskbar from "../dashBoard/taskBar/dashBoard.taskBar.component";
 import { connect } from "react-redux";
 
 function BarName({ deviceType, backgroundColor, user, textColor }) {
+ 
  const {barName} = user.user ;
   const taskBar = {
     mobileView: "block",
@@ -24,9 +25,9 @@ function BarName({ deviceType, backgroundColor, user, textColor }) {
   return (
     <NameHolder backgroundColor={backgroundColor} onClick={() => flipTaskBar()}>
       <Text textColor={textColor}> { barName ||  "company Name"}</Text>
-      {deviceType !== "large" && (
+      {deviceType.deviceType !== "large" && (
         <TaskHolder taskBarState={taskBarState}>
-          <Taskbar width="150px" background = {backgroundColor} textColor={textColor}/>
+          <Taskbar flipTaskBar = {flipTaskBar} width="100%" background = {backgroundColor} textColor={textColor}/>
         </TaskHolder>
       )}
     </NameHolder>

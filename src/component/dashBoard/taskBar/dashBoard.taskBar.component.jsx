@@ -3,16 +3,22 @@ import {
   TaskBarParentDiv,
   TaskBarElementHolder,
   Link,
+  TaskBarCloser
 } from "./dashBoard.taskBar.styled";
 import { BusinessElement } from "../dashBoardTools";
+import { connect } from "react-redux";
 import SignOut from "../../signOut/signOut.component"
 
-function TaskBar(props) {
-  return (
+function TaskBar({deviceType, background, textColor, width, flipTaskBar}) {
+    return (
     <TaskBarParentDiv
-      background={props.background }
-      width={props.width}
+      background={background }
+      width={width}
     >
+      
+       {(deviceType !== "large") &&
+       <TaskBarCloser onClick = {() => flipTaskBar()} > &#9747; </TaskBarCloser>
+      }
       {BusinessElement.map((element) => (
         <Link
           activeStyle={{
@@ -20,10 +26,10 @@ function TaskBar(props) {
             color: "green",
             backgroundColor: "green",
           }}
-          to={element.id}
+          to={element.linkTo}
           key={element.id}
         >
-          <TaskBarElementHolder color = {props.textColor} key={element.id}>
+          <TaskBarElementHolder color = {textColor} key={element.id}>
             {element.icon} {element.text}
           </TaskBarElementHolder>
         </Link>
@@ -33,4 +39,10 @@ function TaskBar(props) {
   );
 }
 
-export default TaskBar;
+const mapStateToProps = (state) => {
+  const { deviceType } = state.deviceType ;
+  return { deviceType };
+};
+
+export default connect(mapStateToProps)(TaskBar);
+

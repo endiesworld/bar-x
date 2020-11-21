@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 export const HomeParentDiv = styled.div`
   width: ${(props) => (props.deviceType === "mobile" ? "100%" : "100%")};
@@ -43,4 +44,8 @@ export const SummaryHolder = styled.div`
   width: 100%;
   height: 95%;
   min-height: 220px;
+`;
+
+export const Link = styled(NavLink)`
+  text-decoration-line: none;
 `;
