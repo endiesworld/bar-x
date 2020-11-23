@@ -35,9 +35,8 @@ export const Xlogo = styled(xlogo)`
 
 export const Buttonholder = styled.div`
   height: 70%;
-  width: ${(props) => (props.deviceType !== "large" ? "20%" : "15%")}; ;
+  width: 150px ;
   min-width: 150px;
   text-decoration: none;
   cursor: pointer;
-  margin-right: ${(props) => (props.deviceType !== "large" ? "" : "3%")};
  `;

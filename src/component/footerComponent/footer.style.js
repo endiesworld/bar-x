@@ -3,7 +3,7 @@ import { ReactComponent as cee } from "../../assets/copyright.svg";
 
 export const FooterHolder = styled.div`
   display: flex;
-  height: 10%;
+  height: 5%;
   align-items: center;
   justify-content: center;
 `;

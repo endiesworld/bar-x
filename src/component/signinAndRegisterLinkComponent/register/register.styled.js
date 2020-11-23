@@ -12,16 +12,15 @@ export const Link = styled(link)`
 `;
 
 export const RegisterText = styled.h2`
-  font-size: 0.8rem;
-  font-family: Regular "Montserrat";
+  
 `;
 
 export const LinkText = styled.h2`
   border-top: 1em;
-  font-size: 0.8rem;
+
   color: #ffffff;
 
-  font-family: Regular "Montserrat";
+  
   :hover {
     background: #ffba00;
     color: #291563;
@@ -32,7 +31,7 @@ export const RegisterAndArrowHolder = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: ${(props) => props.width || "100%"};
+  width: ${(props) => props.width || "100px"};
   height: ${(props) => props.height || "100%"};
   color: ${(props) => props.color || "#291563"};
 
@@ -52,7 +51,7 @@ export const DropdownHolder = styled.div`
   }
 `;
 export const Arrow = styled.div`
-  margin-right: 2em;
+  margin-right: 23px ;
   transition: transform 1s;
   ${ParentDiv}:hover & {
     transform: rotate(90deg);

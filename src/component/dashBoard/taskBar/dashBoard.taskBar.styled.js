@@ -5,7 +5,6 @@ export const TaskBarParentDiv = styled.div`
   background-color: ${(props) => props.background || "#ffffff"};
   height: 100vh;
   width: ${(props) => props.width || "20%"};
-  
   max-width: 200px;
   min-width: 150px;
   margin-top: 4%;

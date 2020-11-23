@@ -6,7 +6,7 @@ import { ReactComponent as merryMenImage } from "../../assets/merry-men.svg";
 
 export const AboutPage = styled.div`
   width: 100vw;
-  height: ${(props) => (props.device !== "large" ? "120vh" : "630px")};
+  height: ${(props) => (props.device !== "large" ? "900px" : "630px")};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +15,7 @@ export const AboutPage = styled.div`
 
 export const AboutPageParent = styled.div`
   width: 100vw;
-  height: 90%;
+  height: 95%;
   display: flex;
   flex-direction: ${(props) => (props.device === "mobile" ? "column" : "row")};
 `;
