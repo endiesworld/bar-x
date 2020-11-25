@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react";
 import { NameHolder, Text, TaskHolder } from "./barName.styled";
 import Taskbar from "../dashBoard/taskBar/dashBoard.taskBar.component";
 import { connect } from "react-redux";
+import {getBarName} from "../../redux/user/user.selector" ;
 
-function BarName({ deviceType, backgroundColor, user, textColor }) {
- 
- const {barName} = user.user ;
+function BarName({ deviceType, backgroundColor, barName, textColor }) {
+ ;
   const taskBar = {
     mobileView: "block",
     wideScreen: "none",
@@ -35,8 +35,9 @@ function BarName({ deviceType, backgroundColor, user, textColor }) {
 }
 
 const mapStateToProps = (state) => {
-  const { deviceType , user} = state ;
-  return { deviceType, user };
+  const { deviceType } = state ;
+  const barName = getBarName(state) ;
+  return { deviceType, barName };
 };
 
 export default connect(mapStateToProps)(BarName);

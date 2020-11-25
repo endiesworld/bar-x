@@ -24,5 +24,5 @@ export const initialValues = {
 export const onSubmit = async (values) => {
   let userDetails = JSON.stringify(values, null, 2);
   userDetails = JSON.parse(userDetails) ;
-  signIn(userDetails.email, userDetails.password) ;
+  await signIn(userDetails.email, userDetails.password) ;
 };

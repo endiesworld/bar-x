@@ -3,6 +3,7 @@ import {Navigate} from "react-router-dom";
 import { connect } from "react-redux";
 import LoadingPage from "../../loading/loading.component" ;
 import { useFormik } from "formik";
+import {getUserDetails} from "../../../redux/user/user.selector" ;
 
 
 import {
@@ -22,24 +23,25 @@ import {
   onSubmit,
 } from "./signinFormElements";
 
-function SigninComponent({  user }) {
+function SigninComponent( {userDetails } ) {
+  console.log("user details:", userDetails)
   
   const formik = useFormik({
     initialValues,
     onSubmit,
   });
  
- if( !(user.user === "LOADING" || user.user === null)) {
+ if( !(userDetails === "LOADING" || userDetails === null)) {
    return <Navigate to = '/dashboard' /> ;
  }
 
- if( user.user === "LOADING") {
+  else if( userDetails === "LOADING") {
    return <LoadingPage /> ;
  }
-
+else if (userDetails === null)
   return (
     <>
-    <Form onSubmit={formik.handleSubmit}>
+    <Form onSubmit={ formik.handleSubmit}>
       {signinFormFields.map((element, index) => (
         <GroupElement key={index}>
           <Label>{element.label} </Label>
@@ -74,9 +76,8 @@ function SigninComponent({  user }) {
 
 
 const mapStateToProps = (state) => {
-  const { user } = state;
-    return {user};
+  const userDetails = getUserDetails(state) ;
+    return {userDetails};
 };
-
 
 export default connect(mapStateToProps)(SigninComponent);

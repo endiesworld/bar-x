@@ -28,9 +28,6 @@ function SigninPage({ deviceType }) {
   );
 }
 
-const mapStateToProps = (state) => {
-  const { deviceType } = state.deviceType;
-  return { deviceType };
-};
+const mapStateToProps = ({deviceType  :{deviceType}}) =>({  deviceType}) ;
 
 export default connect(mapStateToProps)(SigninPage);

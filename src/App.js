@@ -21,7 +21,6 @@ import {auth, firestore} from "./firebase/firebase.util.store" ;
 import {getBarDetails} from "./firebase/newUserProfile" ;
 
 function App({ desktopView, mobileView, tabView, deviceType, barxUser}) {
-  
   checkScreenSize(mobileView, tabView, desktopView, deviceType);
     useEffect( () => {
      let unsub = auth.onAuthStateChanged( async (user) => {  
@@ -47,18 +46,18 @@ function App({ desktopView, mobileView, tabView, deviceType, barxUser}) {
 return (
     <div className="app">
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" render={() => <div>Home</div>}  element={  <LandingPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/signin" element={<SigninPage />} />
-        <Route path="/dashboard/*" element={<DashBoard />} />
+        <Route path="/dashboard/*" element={ <DashBoard />} />
       </Routes>
     </div>
   );
 }
-
 const mapStateToProps = (state) => {
-  const { deviceType } = state.deviceType;
-    return { deviceType};
+  const { deviceType } = state.deviceType ;
+  
+  return { deviceType};
 };
 
 const mapDispatchToProps = (dispatch) => {

@@ -8,8 +8,8 @@ import { useNavigate } from 'react-router-dom';
 
 function SignOut() {
     let navigate = useNavigate();
-    const signOutHandler = () => {
-    signOut () ;
+    const signOutHandler = async () => {
+    await signOut () ;
     navigate('/signin', { replace: true });
 }
     return (
