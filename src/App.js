@@ -56,7 +56,6 @@ return (
 }
 const mapStateToProps = (state) => {
   const { deviceType } = state.deviceType ;
-  
   return { deviceType};
 };
 

@@ -1,10 +1,25 @@
 * {
   box-sizing: border-box;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 
 html {
   font-size: 18px;
   width: 100vw;
+  font-family: "PT Sans", sans-serif;
+}
+
+h1 {
+  font-size: 1.3rem;
   font-family: "PT Sans", sans-serif;
 }
 
@@ -31,12 +46,12 @@ p {
   h2 {
     font-size: 0.8rem;
   }
-}
+}*/
 @media screen and (max-width: 500px) {
   html {
     font-size: 16px;
   }
-  h2 {
-    font-size: 0.8rem;
+  h1 {
+    font-size: 1rem;
   }
-} */
+}

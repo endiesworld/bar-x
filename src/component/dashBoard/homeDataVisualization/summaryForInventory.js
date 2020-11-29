@@ -3,18 +3,19 @@ import {appendGroupAndTranslate} from "./publicSVGtools" ;
 import {legend} from "./dataLabel" ;
 
 const d3Selection = {
-  color: ["green", "tomato", "#ffba00", "#291563", "#03fcba"],
+  color: ["green", "tomato", "#ffba00", "#291563", "#03fcba", "red"],
 };
 
 //data consumed in inventory
 const inventoryData = {
-  value: [1, 1, 1, 1, 1],
+  value: [20, 5, 7, 4, 2],
   name: [
     "Issued L.P.O's ",
     "Recieved items",
     "Items in store",
     "Items in refrigirators",
     "Items sold",
+  
   ],
 };
 

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ManagementFeaturesHolder = styled.div`
   margin-bottom: 2em;
   margin-top: 5em;
-  width: ${(props) => (props.deviceType === "mobile" ? "auto" : "100%")};
+  width: 100%;
 
   height: auto;
   display: grid;

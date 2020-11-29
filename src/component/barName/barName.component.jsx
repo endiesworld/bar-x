@@ -4,6 +4,7 @@ import { NameHolder, Text, TaskHolder } from "./barName.styled";
 import Taskbar from "../dashBoard/taskBar/dashBoard.taskBar.component";
 import { connect } from "react-redux";
 import {getBarName} from "../../redux/user/user.selector" ;
+import {getDeviceType} from "../../redux/deviceType/deviceType.selector" ;
 
 function BarName({ deviceType, backgroundColor, barName, textColor }) {
  ;
@@ -35,7 +36,7 @@ function BarName({ deviceType, backgroundColor, barName, textColor }) {
 }
 
 const mapStateToProps = (state) => {
-  const { deviceType } = state ;
+  const deviceType  =  getDeviceType(state) ;
   const barName = getBarName(state) ;
   return { deviceType, barName };
 };

@@ -5,7 +5,7 @@ import WorkEnvironment from "./workEnvironment/dashBoard.workEnvironment.compone
 import { connect } from "react-redux";
 import { dashBoardProperties} from "./dashBoardTools";
 
-function DashBoardComponent({ deviceType }) {
+function DashBoardWorkSpace({ deviceType }) {
   return (
     <div>
       <WorkenvironmentParentDiv deviceType={deviceType}>
@@ -21,4 +21,4 @@ const mapStateToProps = (state) => {
   return { deviceType };
 };
 
-export default connect(mapStateToProps)(DashBoardComponent);
+export default connect(mapStateToProps)(DashBoardWorkSpace);

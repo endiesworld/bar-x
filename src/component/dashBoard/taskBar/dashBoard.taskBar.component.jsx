@@ -14,6 +14,7 @@ function TaskBar({deviceType, background, textColor, width, flipTaskBar}) {
     <TaskBarParentDiv
       background={background }
       width={width}
+      deviceType ={deviceType}
     >
       
        {(deviceType !== "large") &&

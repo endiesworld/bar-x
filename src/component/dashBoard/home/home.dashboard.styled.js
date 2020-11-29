@@ -2,19 +2,18 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 export const HomeParentDiv = styled.div`
-  width: ${(props) => (props.deviceType === "mobile" ? "100%" : "100%")};
 
-  height: ${(props) => (props.deviceType === "mobile" ? "100%" : "auto")};
-  margin-bottom: 2em;
-  margin-top: 5em;
+  width: ${(props) => (props.deviceType === "mobile" ? "100%" : "100%")};
+  height: ${(props) => (props.deviceType === "mobile" ? "100%" : "100%")};
+  margin-top: 50px;
   display: grid;
   grid-template-columns: ${(props) =>
     props.deviceType === "mobile" ? "1fr" : "1fr 1fr"};
 
   justify-items: center;
   align-items: center;
-  row-gap: 15px;
-  column-gap: 15px;
+  row-gap: 5px;
+  column-gap: 5px;
 `;
 
 export const HomeChildrenDiv = styled.div`

@@ -4,6 +4,8 @@ import { useFormik } from "formik";
 import {  Navigate } from 'react-router-dom';
 import LoadingPage from "../../loading/loading.component" ;
 import { connect } from "react-redux";
+import {createStructuredSelector} from "reselect" ; 
+import {getUserDetails} from "../../../redux/user/user.selector" ;
 
 
 import {
@@ -25,7 +27,7 @@ import {
   passwordProperties,
 } from "./signupFormElement";
 
-function SignUpComponent( {user}) {
+function SignUpComponent( {userDetails }) {
   
   const formik = useFormik({
     initialValues,
@@ -35,18 +37,17 @@ function SignUpComponent( {user}) {
 
  
  
-if( !(user.user === "LOADING" || user.user === null)) {
+if( !(userDetails === "LOADING" || userDetails === null)) {
    return <Navigate to = '/dashboard' /> ;
  }
 
- if( user.user === "LOADING") {
+  else if( userDetails === "LOADING") {
    return <LoadingPage /> ;
  }
 
-
+else if (userDetails === null)
   return (
-    
-    <Form onSubmit={formik.handleSubmit}>
+        <Form onSubmit={formik.handleSubmit}>
       {signupFormFields.map((element, index) => (
         <GroupElement key={index}>
           <Label>
@@ -107,10 +108,10 @@ if( !(user.user === "LOADING" || user.user === null)) {
 }
 
 
-const mapStateToProps = (state) => {
-  const { user } = state;
-    return {user};
-};
+const mapStateToProps =  createStructuredSelector ( {
+  userDetails: getUserDetails
+}
+)
 
 
 export default connect(mapStateToProps)(SignUpComponent);

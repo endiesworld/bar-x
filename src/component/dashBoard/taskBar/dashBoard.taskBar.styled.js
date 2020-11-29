@@ -7,7 +7,7 @@ export const TaskBarParentDiv = styled.div`
   width: ${(props) => props.width || "20%"};
   max-width: 200px;
   min-width: 150px;
-  margin-top: 4%;
+  margin-top: ${(props) => props.deviceType === "large" ? "50px" : "8px"}; 
   padding-top: 20px;
 `;
 

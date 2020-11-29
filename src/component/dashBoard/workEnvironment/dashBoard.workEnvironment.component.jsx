@@ -6,6 +6,8 @@ import InventoryDashboard from "../inventoryDashboard/inventory.dashboard.compon
 import ItemMenueDashboard from "../item-menueDashboard/item-menue.dashboard.component";
 import ManagementDashboard from "../managementDashboard/management.dashboard.component";
 import DailyOpsDashboard from "../dailyOpsDashboard/dailyOps.dashboard.component";
+import InventoryHome from "../inventoryDashboard/inventory/inventory.home.component" ;
+import GenerateLPO from "../inventoryDashboard/inventory/LPO/generate_lpo/generate_lpo.component"
 import { connect } from "react-redux";
 
 function WorkEnvironment({ deviceType }) {
@@ -15,7 +17,10 @@ function WorkEnvironment({ deviceType }) {
       <Routes>
         <Route path="/" element={<HomeDashboard />} />
         <Route path="/home" element={<HomeDashboard />} />
-        <Route path="/inventory" element={<InventoryDashboard />} />
+        <Route path="/inventory" element={<InventoryDashboard />} >
+          <Route path="generatelpo" element={ <GenerateLPO />} />
+          <Route path="/" element={<InventoryHome />} />
+        </Route >  
         <Route path="/itemsMenue" element={<ItemMenueDashboard />} />
         <Route path="/management" element={<ManagementDashboard />} />
         <Route path="/dailyOps" element={<DailyOpsDashboard />} />
