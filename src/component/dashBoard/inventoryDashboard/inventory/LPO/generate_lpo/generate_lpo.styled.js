@@ -5,7 +5,7 @@ import {Formik, Form, Field  } from "formik";
 export const ParentDiv = styled.div`
 margin-top: 100px ;
 width: 100%;
-max-width: 600px ;
+max-width: 750px ;
 height: auto;
 display: flex ;
 flex-direction: column ;
@@ -41,7 +41,7 @@ export const LpoItemGroupElements = styled.div`
   width: 100%;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  padding-left: 20px ;
 `;
 
 export const Label = styled.label`
@@ -58,10 +58,24 @@ height: ${(props) => props.inputtype === "ADDRESS" ? "50px" : "30px"  };
 border: 0px ;
 `;
 
+export const LpoInputFieldLabel  = styled.label`
+width: ${(props) => props.inputtype === 1 ? "27.5%" : "14%"  };
+max-width: ${(props) => props.inputtype === 1 ? "212.2px" : "101.2px"  };
+height: 35px;
+border: 0.1px groove #e3e3e3;
+color: #ffffff;
+background-color:  #291563 ;
+padding-top: 8px ;
+text-align: center ;
+font-size: 0.7rem;
+font-family: "PT Sans", sans-serif;
+`;
+
 export const LpoInputField  = styled(Field )`
-width: ${(props) => props.inputtype === "itemDescription" ? "25%" : "15%"  };
+width: ${(props) => props.inputtype === 1 ? "27.5%" : "14%"  };
+max-width: ${(props) => props.inputtype === 1 ? "212.2px" : "101.2px"  };
 height: 25px;
-border: 1px  solid;
+border: 0.1px groove #e3e3e3;
 `;
 
 export const LpoInput  = styled.input`
@@ -145,9 +159,7 @@ padding-left: 5px ;
 
 export const OrderNoAndDateField  = styled(Field )`
 color: #00000f;
-border-style: groove;
-border-width: 0.1px;
-border-color: #e3e3e3;
+border: 0.1px groove #e3e3e3;
 height: 70% ;
 padding-top: 10px ;
 padding-left: 5px ;
@@ -189,7 +201,7 @@ width: 50% ;
 min-height: 280px ;
 `;
 export const DeliverySideHeader = styled(VendorSideHeader)`
-padding-left: 19px ;`;
+padding-left: 19px ;`
 
 export const DeliverySideDetails = styled.div`
 height: 90% ;
@@ -199,8 +211,9 @@ margin-left: 14px ;
 `;
 
 export const ItemSection = styled.section`
+padding-top: 10px ;
 width: 100% ;
 height: 60% ;
 min-height: 300px ;
-background-color: green ;
+background-color: #e8e7e6 ;
 `;

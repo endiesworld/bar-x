@@ -14,12 +14,13 @@ function LpoItemsFieldGenerator({ addItemToPO, name}) {
                                     addItemToPO(push) ;
                                     return  poItems.map((poItem, index) => 
                                              <LpoItemGroupElements key = {index}>
-                                                 <FieldArray name ={`poItems[${index}]`}>
+                                                 <FieldArray name ={`poItems[${index}]`} >
                                                      {
                                                      (formikFieldProps) => { 
                                                      const { form:{setFieldValue, getFieldMeta, handleBlur}} =  formikFieldProps ;
                                                      const itemsInPo = Object.keys(poItem)   ;
-                                                      return itemsInPo.map((item, index2) =>  <LpoInputField   key ={index2} 
+                                                      return itemsInPo.map((item, index2) =>  <LpoInputField  key ={index2} inputtype={index2}
+                                                      readOnly = { index2 === 5 ? true : false}
                                                          name= {`poItems[${index}].${item}`} 
                                                         onBlur = {(e) =>{handleBlur(e) ; 
                                                             (index2 === 2 || index2 === 4 ) && 

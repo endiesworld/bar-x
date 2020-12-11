@@ -14,6 +14,7 @@
      rate: 1,
      amount: "", 
  }
+export const tableLabels = ["S/N", "Item Description" , "Quantity", "Unit",  "Unit Price", "Amount"]
 
 const poObjects = [poRowData ] ;
 

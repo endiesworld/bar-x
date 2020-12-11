@@ -7,10 +7,10 @@ import {getDeviceType} from "../../../../../../redux/deviceType/deviceType.selec
 import {ParentDiv, LPOFormik, FormikForm, Header, VendorCustomerSection, ItemSection, VendorSide, VendorSideHeader,
      DeliverySide, DeliverySideHeader, 
      UserDetailsSection , OrderSection, PageTitle, DateAndOrder,  OrderTitleHolder, UserDeatails, BarName,
-     SubmitBotton, DeliverySideDetails, VendorDetails,LpoItemGroupElements,
+     SubmitBotton, DeliverySideDetails, VendorDetails,LpoItemGroupElements, LpoInputFieldLabel
 } from "./generate_lpo.styled" ;
 import FooterComponent from "../../../../../footerComponent/footer.component" ;
-import {initialValues, onSubmit, vendorDetails, deliveryToDetails, poRowData } from "../lpo-tools/lpo_date" ;
+import {initialValues, onSubmit, vendorDetails, deliveryToDetails, poRowData, tableLabels } from "../lpo-tools/lpo_date" ;
 import LpoItemsFieldGenerator from "./lpo_items_field_generator.component"   ; 
 import VendorAndDeliveryTo from "./lpo_vendor_deliveryTo.component" ;
 import GenerateDateAndNumber from "./lpo_number_date.component"
@@ -59,6 +59,13 @@ function GenerateLPO({ deviceType, userDetails, addItemToLPO }) {
                         </DeliverySide>
                     </VendorCustomerSection>
                     <ItemSection>
+                        <LpoItemGroupElements >
+                            {tableLabels.map((label, index) => 
+                            <LpoInputFieldLabel inputtype={index} key = {index}> 
+                                {label}
+                            </LpoInputFieldLabel>  )}
+                                   
+                        </LpoItemGroupElements>
                         <LpoItemsFieldGenerator name = "poItems" />
                     </ItemSection>
                     <LpoItemGroupElements>
