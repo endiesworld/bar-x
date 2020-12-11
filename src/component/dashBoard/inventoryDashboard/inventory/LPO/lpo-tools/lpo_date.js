@@ -6,19 +6,31 @@
  
  const poDate = getCurrentdate() ;
 
+ export const poRowData = {
+     sNumber : "",
+     productDecription: "" ,
+     quantity: 1,
+     unit: "",
+     rate: 1,
+     amount: "", 
+ }
+
+const poObjects = [poRowData ] ;
+
  export const initialValues = {
   poNumber: "00001" ,
   poDate:  poDate,
-  vendorName: "", 
+  vendorContactPerson: "", 
   vendorCompanyName: "",
   vendorAddress: "", 
   vendorPhone: "", 
   vendorEmail: "",
-  deliveryToName: "", 
+  deliveryToContactPerson: "", 
   deliveryToCompanyName: "", 
   deliveryToAddress: "", 
   deliveryToPhone: "",
   deliveryToEmail: "",
+  poItems: poObjects ,
 };
 
 export const onSubmit = (values) => {
@@ -29,7 +41,7 @@ export const onSubmit = (values) => {
 
 const vendorName =  {
     label: "CONTACT PERSON" ,
-    name: "vendorConactPerson" ,
+    name: "vendorContactPerson" ,
     type: "text"
 };
 
@@ -61,7 +73,7 @@ export const vendorDetails = [vendorName, vendorCompanyName, vendorAddress, vend
 
 const deliveryToName =  {
     label: "CONTACT PERSON" ,
-    name: "deliveryToConactPerson",
+    name: "deliveryToContactPerson",
     type: "text" ,
 };
 

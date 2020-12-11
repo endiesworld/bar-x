@@ -7,7 +7,8 @@ import ItemMenueDashboard from "../item-menueDashboard/item-menue.dashboard.comp
 import ManagementDashboard from "../managementDashboard/management.dashboard.component";
 import DailyOpsDashboard from "../dailyOpsDashboard/dailyOps.dashboard.component";
 import InventoryHome from "../inventoryDashboard/inventory/inventory.home.component" ;
-import GenerateLPO from "../inventoryDashboard/inventory/LPO/generate_lpo/generate_lpo.component"
+//import GenerateLPO from "../inventoryDashboard/inventory/LPO/generate_lpo/generate_lpo.component"
+import GenerateLPO from "../inventoryDashboard/inventory/LPO/generate_lpo/generate_lpo.form"
 import { connect } from "react-redux";
 
 function WorkEnvironment({ deviceType }) {

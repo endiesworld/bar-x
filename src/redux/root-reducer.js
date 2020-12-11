@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage" ;
 
 import deviceTypeReducer from "./deviceType/deviceType.reducer";
 import userReducer from "./user/user.reducer";
+import addItemToLPOReducer from "./lpo/addItemToLPO.reducer" ;
 
 const persistConfig = { // configuration object for redux-persist
     key: 'root',
@@ -14,6 +15,7 @@ const persistConfig = { // configuration object for redux-persist
 const rootReducer = combineReducers({
   deviceType: deviceTypeReducer,
   user: userReducer,
+  addItemToLPO: addItemToLPOReducer,
 });
 
 export default persistReducer( persistConfig, rootReducer);

@@ -1,4 +1,5 @@
 import styled from "styled-components" ;
+import {Formik, Form, Field  } from "formik";
 
 
 export const ParentDiv = styled.div`
@@ -12,12 +13,12 @@ justify-content: space-between ;
 align-items: center ;
 ` ;
 
-export const LPODiv = styled.div`
+export const LPOFormik = styled(Formik)`
 width: 100% ;
 height: 90% ;
 ` ;
 
-export const Form = styled.form`
+export const FormikForm = styled(Form)`
   width: 100%;
   height: 90%;
   display: flex;
@@ -35,6 +36,14 @@ export const GroupElement = styled.div`
   margin-top: 3px ;
 `;
 
+export const LpoItemGroupElements = styled.div`
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+`;
+
 export const Label = styled.label`
 font-size: 0.6rem;
   font-family: "PT Sans", sans-serif;
@@ -43,10 +52,22 @@ font-size: 0.6rem;
   margin-top: 5px ;
 `;
 
-export const Input = styled.input`
+export const InputField  = styled(Field )`
 width: 100% ;
-height: ${(props) => props.inputType === "ADDRESS" ? "50px" : "30px"  };
+height: ${(props) => props.inputtype === "ADDRESS" ? "50px" : "30px"  };
 border: 0px ;
+`;
+
+export const LpoInputField  = styled(Field )`
+width: ${(props) => props.inputtype === "itemDescription" ? "25%" : "15%"  };
+height: 25px;
+border: 1px  solid;
+`;
+
+export const LpoInput  = styled.input`
+width: ${(props) => props.inputtype === "itemDescription" ? "25%" : "15%"  };
+height: 25px;
+border: 1px  solid;
 `;
 
 export const SubmitBotton = styled.button`
@@ -107,22 +128,22 @@ height: 60% ;
 width: 100% ;
 `;
 
-export const Order = styled.div`
+export const OrderAndDate = styled.div`
 display: flex ;
 flex-direction: column ;
 justify-content: flex-start ;
 height: 100% ;
-width: 60% ;
+width: ${(props) => props.datatype === "date" ? "40%" : "60%"} ;
 `;
 
-export const OrderTitle = styled.h2`
+export const OrderAndDateTitle = styled.h2`
 color: #ffffff;
 background-color:  #291563 ;
 height: 30% ;
 padding-left: 5px ;
 `;
 
-export const OrderNo = styled.input`
+export const OrderNoAndDateField  = styled(Field )`
 color: #00000f;
 border-style: groove;
 border-width: 0.1px;
@@ -130,18 +151,7 @@ border-color: #e3e3e3;
 height: 70% ;
 padding-top: 10px ;
 padding-left: 5px ;
-`;
-
-export const Date = styled(Order)`
-width: 40% ;
-height: 100 ;
-`;
-
-export const DateTitle = styled(OrderTitle)`
-`;
-
-export const DateValue = styled(OrderNo)`
-font-size: ${(props) => props.deviceType ==="mobile" ? "0.6em" : "0.8em" }  ;
+font-size: ${(props) => props.devicetype ==="mobile" ? "0.6em" : "0.8em" }  ;
 `;
 
 export const VendorCustomerSection = styled.section`
