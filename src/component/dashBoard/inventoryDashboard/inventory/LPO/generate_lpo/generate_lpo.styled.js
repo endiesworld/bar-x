@@ -59,22 +59,23 @@ border: 0px ;
 `;
 
 export const LpoInputFieldLabel  = styled.label`
-width: ${(props) => props.inputtype === 1 ? "27.5%" : "14%"  };
-max-width: ${(props) => props.inputtype === 1 ? "212.2px" : "101.2px"  };
+width: ${(props) => props.width  };
+max-width: ${(props) => props.max_width };
 height: 35px;
 border: 0.1px groove #e3e3e3;
 color: #ffffff;
 background-color:  #291563 ;
 padding-top: 8px ;
-text-align: center ;
+text-align: ${(props) =>props.text_align || "center"} ;
 font-size: 0.7rem;
+padding-left: ${(props) =>props.padding_left || "0px"} ;
 font-family: "PT Sans", sans-serif;
 `;
 
 export const LpoInputField  = styled(Field )`
-width: ${(props) => props.inputtype === 1 ? "27.5%" : "14%"  };
-max-width: ${(props) => props.inputtype === 1 ? "212.2px" : "101.2px"  };
-height: 25px;
+width: ${(props) => props.width  };
+max-width: ${(props) => props.max_width };
+height: ${(props) => props.height || "25px" }; 
 border: 0.1px groove #e3e3e3;
 `;
 
@@ -213,7 +214,53 @@ margin-left: 14px ;
 export const ItemSection = styled.section`
 padding-top: 10px ;
 width: 100% ;
-height: 60% ;
-min-height: 300px ;
+height: auto;
+min-height: 100px ;
 background-color: #e8e7e6 ;
+padding-bottom: 5px ;
+`;
+
+export const NoteAndTotalSide = styled.section`
+width: 100% ;
+height: 150px ;
+display: flex ;
+padding-left: 20px ;
+background-color: #e8e7e6 ;
+`;
+
+export const NoteSide = styled.div`
+width: 55.5% ;
+max-width: 414.6px ;
+height: 140px ;
+border: 0.1px groove #e3e3e3;
+display:flex ;
+flex-direction:column ;
+`;
+
+export const TotalSide = styled.div`
+width: 42% ;
+max-width: 303.6px ;
+height: 140px ;
+border: 0.1px groove #e3e3e3;
+display:flex ;
+flex-direction:column ;
+`;
+
+export const SubTotalSide = styled.div`
+width: 100% ;
+height: 20% ;
+display:flex ;
+`;
+
+export const SubTotalSideLabel = styled.label`
+width: ${(props) => props.width || "66.67%"}  ;
+max-width: ${(props) => props.max_width };
+height: 100% ;
+border: 0.1px groove #e3e3e3;
+background-color: #ffffff ;
+font-size: 0.7rem;
+font-weight: bold ;
+padding-top: 8px ;
+padding-left: ${(props) =>props.padding_left || "5px"} ;
+font-family: "PT Sans", sans-serif;
 `;

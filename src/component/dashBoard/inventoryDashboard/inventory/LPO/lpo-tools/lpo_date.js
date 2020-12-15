@@ -14,7 +14,9 @@
      rate: 1,
      amount: "", 
  }
-export const tableLabels = ["S/N", "Item Description" , "Quantity", "Unit",  "Unit Price", "Amount"]
+export const tableLabels = ["S/N", "Item Description" , "Qty", "Unit",  "Unit Price", "Amount"]
+export const lpoInputFieldWidthSize = ["7%", "48.5%", "7%", "7%", "14%", "14%"] ;
+export const max_lpoInputFieldWidthSize = ["50.6px", "364px", "50.6px", "50.6px", "101.2px", "101.2px"] ;
 
 const poObjects = [poRowData ] ;
 
@@ -26,12 +28,20 @@ const poObjects = [poRowData ] ;
   vendorAddress: "", 
   vendorPhone: "", 
   vendorEmail: "",
+  note: "" ,
   deliveryToContactPerson: "", 
   deliveryToCompanyName: "", 
   deliveryToAddress: "", 
   deliveryToPhone: "",
   deliveryToEmail: "",
   poItems: poObjects ,
+  subTotal: 0,
+  percentageDiscount: 0,
+  discountValue: 0,
+  percentageTax: 0 ,
+  taxValue: 0 ,
+  deliveryCost: 0,
+  totalAmount: 0 ,
 };
 
 export const onSubmit = (values) => {
@@ -105,6 +115,65 @@ const deliveryToEmail =  {
 export const deliveryToDetails = [deliveryToName, deliveryToCompanyName, deliveryToAddress, 
     deliveryToPhone,deliveryToEmail] ;
 
-// export const LPOData = [
 
-// ]
+
+
+const processDiscount = (getFieldMeta, existingSubTotal = undefined ) => {
+   const percentageValue = getFieldMeta("percentageDiscount").value ;
+   const subTotalValue = existingSubTotal || getFieldMeta("subTotal").value ; 
+   let processedDiscountValue ;
+   (percentageValue) ? ( processedDiscountValue = 
+    (percentageValue/100) * subTotalValue ) : processedDiscountValue =  0;
+   return processedDiscountValue ;
+} 
+
+const processTaxValue = (getFieldMeta, existingSubTotal = undefined) => {
+    const percentageValue = getFieldMeta("percentageTax").value ;
+    const subTotalValue = existingSubTotal || getFieldMeta("subTotal").value ; 
+    const subTotalAfterDiscount = subTotalValue - processDiscount(getFieldMeta, subTotalValue) ;
+    let processedTaxValue ;
+   (percentageValue) ? ( processedTaxValue = (percentageValue/100) * subTotalAfterDiscount ) : processedTaxValue =  0;
+   return processedTaxValue ;
+}
+   
+const valueProcessor = {
+    discountValue: processDiscount ,
+    taxValue: processTaxValue
+}
+
+export const setTotalValue = (setFieldValue, getFieldMeta, setFieldTouched, existingSubTotal = undefined ) => {
+    const subTotal = existingSubTotal || getFieldMeta("subTotal").value ;
+    const discountValue = processDiscount(getFieldMeta, existingSubTotal) ;
+    const taxValue = processTaxValue(getFieldMeta, existingSubTotal) ;
+    const deliveryCost = getFieldMeta("deliveryCost").value ;
+    const totalAmount = subTotal - discountValue + taxValue + deliveryCost ;
+    setFieldValue("taxValue", taxValue) ;
+    setFieldTouched("taxValue", true) ;
+    setFieldValue("discountValue", discountValue) ;
+   setFieldTouched("discountValue", true) ;
+    setFieldValue("totalAmount", totalAmount);
+    setFieldTouched("totalAmount" ,  true) ;
+}    
+
+export const setDiscountValue = (setFieldValue, getFieldMeta, setFieldTouched, valueToSet ) => {
+   let realValue = valueProcessor[valueToSet](getFieldMeta) ;
+   setFieldValue(valueToSet, realValue) ;
+   setFieldTouched(valueToSet, true) ;
+   setTotalValue(setFieldValue, getFieldMeta, setFieldTouched )
+}
+
+export const processAmountSubTotal = (setFieldValue, getFieldMeta , index, setFieldTouched) => {
+    const  newItemAmount = getFieldMeta(`poItems[${index}].quantity`).value * getFieldMeta(`poItems[${index}].rate`).value
+    let subTotal = newItemAmount ;
+    let existingItemsIndex = index -1 ;
+    setFieldValue(`poItems[${index}].amount`, newItemAmount );
+    setFieldTouched(`poItems[${index}].amount` ,  true) ;
+    while(existingItemsIndex>= 0) {
+        subTotal += getFieldMeta(`poItems[${existingItemsIndex}].amount`).value ;
+        existingItemsIndex-- ;
+    }
+    setFieldValue("subTotal", subTotal );
+    setFieldTouched("subTotal" ,  true) ; 
+    setTotalValue(setFieldValue, getFieldMeta, setFieldTouched, subTotal)
+}
+
