@@ -17,12 +17,12 @@ import VendorAndDeliveryTo from "./lpo_vendor_deliveryTo.component" ;
 import GenerateDateAndNumber from "./lpo_number_date.component"
 
 
-function GenerateLPO({ deviceType, userDetails, addItemToLPO }) {
+function GenerateLPO({ deviceType, userDetails, addItemToLPO , uid}) {
     const {barName, state, city, address, mobileNumber, email} = userDetails ;   
     
     return (
         <ParentDiv>
-                <LPOFormik initialValues = {initialValues} onSubmit={onSubmit}>
+                <LPOFormik initialValues = {{...initialValues, uid: uid}} onSubmit={onSubmit}>
                     {(formProps) =>
                  <FormikForm>
                      
@@ -88,8 +88,8 @@ function GenerateLPO({ deviceType, userDetails, addItemToLPO }) {
                                 <LpoInputField readOnly ={true} autoComplete= "on" name= "subTotal" width="33.3%" height="100%" max_width="101.2px" />
                             </SubTotalSide>
                             <SubTotalSide>
-                                <SubTotalSideLabel width="33.3%">Discount(%)</SubTotalSideLabel>
-                                <LpoInputField type="number" autoComplete= "on" name= "percentageDiscount" width="33.4%" 
+                                <SubTotalSideLabel width="43.3%">Discount(%)</SubTotalSideLabel>
+                                <LpoInputField type="number" autoComplete= "on" name= "percentageDiscount" width="23.4%" 
                                 height="100%" max_width="101.2px" 
                                 onBlur={(e) => {formProps.handleBlur(e);
                                 setDiscountValue(formProps.setFieldValue, formProps.getFieldMeta,
@@ -98,8 +98,8 @@ function GenerateLPO({ deviceType, userDetails, addItemToLPO }) {
                                  width="33.3%" height="100%" max_width="101.2px" />
                             </SubTotalSide>
                             <SubTotalSide>
-                                <SubTotalSideLabel width="33.3%">Tax(%)</SubTotalSideLabel>
-                                <LpoInputField type="number" autoComplete= "on" name= "percentageTax" width="33.4%" 
+                                <SubTotalSideLabel width="43.3%">Tax(%)</SubTotalSideLabel>
+                                <LpoInputField type="number" autoComplete= "on" name= "percentageTax" width="23.4%" 
                                 height="100%" max_width="101.2px" 
                                 onBlur={(e) => {formProps.handleBlur(e);
                                 setDiscountValue(formProps.setFieldValue, formProps.getFieldMeta,
@@ -140,7 +140,8 @@ const mapStateToProps = (state) => {
   const deviceType  =  getDeviceType(state) ;
   const userDetails = getUserDetails(state) ;
   const { addItemToLPO } = state.addItemToLPO ;
-  return { deviceType, userDetails, addItemToLPO };
+  const { uid } = state.uid ;
+  return { deviceType, userDetails, addItemToLPO , uid};
 };
 
 export default connect(mapStateToProps)(GenerateLPO);

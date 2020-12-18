@@ -1,4 +1,7 @@
- 
+ import { connect } from "react-redux" ;
+
+ import {generateLPO}from "../../../../../../firebase/inventory/lpos" ;
+
  export const getCurrentdate = () => {
   const  [month, day, year]    = new window.Date().toLocaleDateString("en-US").split("/") ;
   return `${day}/${month}/${year}` ;
@@ -42,12 +45,6 @@ const poObjects = [poRowData ] ;
   taxValue: 0 ,
   deliveryCost: 0,
   totalAmount: 0 ,
-};
-
-export const onSubmit = (values) => {
-  let lpoData = JSON.stringify(values, null, 2);
-  lpoData = JSON.parse(lpoData) ;
-  console.log("User Details: ", lpoData )
 };
 
 const vendorName =  {
@@ -177,3 +174,17 @@ export const processAmountSubTotal = (setFieldValue, getFieldMeta , index, setFi
     setTotalValue(setFieldValue, getFieldMeta, setFieldTouched, subTotal)
 }
 
+const testingFunction = (dataAsProps) => console.log("Data as ptops: ", dataAsProps)
+
+const mapStateToProps = (state) => {
+  const { uid } = state.uid ;
+  return {  uid};
+};
+
+export default connect(mapStateToProps)(testingFunction);
+
+export const onSubmit = (values) => {
+  let lpoData = JSON.stringify(values, null, 2);
+  lpoData = JSON.parse(lpoData) ;
+  generateLPO(lpoData) ;
+};

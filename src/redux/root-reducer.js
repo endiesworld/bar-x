@@ -15,6 +15,7 @@ const persistConfig = { // configuration object for redux-persist
 const rootReducer = combineReducers({
   deviceType: deviceTypeReducer,
   user: userReducer,
+  uid: userReducer,
   addItemToLPO: addItemToLPOReducer,
 });
 

@@ -10,7 +10,7 @@ import {
   loadTabView,
 } from "./redux/deviceType/deviceType.action";
 
-import {loadUser} from "./redux/user/user.action";
+import {loadUser, loadUserId} from "./redux/user/user.action";
 
 import LandingPage from "./pages/landingPage/landingPage";
 import SignUpPage from "./pages/signUpPage/signUp.page";
@@ -20,13 +20,14 @@ import "./App.css";
 import {auth, firestore} from "./firebase/firebase.util.store" ;
 import {getBarDetails} from "./firebase/newUserProfile" ;
 
-function App({ desktopView, mobileView, tabView, deviceType, barxUser}) {
+function App({ desktopView, mobileView, tabView, deviceType, barxUser, addUid}) {
   checkScreenSize(mobileView, tabView, desktopView, deviceType);
     useEffect( () => {
      let unsub = auth.onAuthStateChanged( async (user) => {  
-       if (user) { 
+       if (user) {  
+         addUid(user.uid) ;
          await getBarDetails(firestore, user)
-         .then((userRef) => ( userRef.data().barDetails) ? barxUser(userRef.data().barDetails) : barxUser(user) ) ;
+         .then((userRef) => ( userRef.data().barDetails) ? barxUser( userRef.data().barDetails) : barxUser(user) ) ;
          }
         else {
           barxUser(user) ;
@@ -65,6 +66,7 @@ const mapDispatchToProps = (dispatch) => {
     desktopView: () => dispatch(loadDesktopView()),
     tabView: () => dispatch(loadTabView()),
     barxUser: (user) => dispatch(loadUser(user)),
+    addUid: (pushItem) => dispatch(loadUserId(pushItem)),
   };
 };
 

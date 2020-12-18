@@ -8,4 +8,11 @@ export const loadUser = (user) => {
   };
 };
 
+export const loadUserId = (Uid) => {
+  return {
+    type: "USERID",
+    payload: Uid
+  };
+};
+
 

@@ -1,5 +1,6 @@
 const INIT_STATE = {
   user: "LOADING",
+  uid: "LOADING",
 };
 
 const userReducer = (state = INIT_STATE, action) => {
@@ -8,6 +9,11 @@ const userReducer = (state = INIT_STATE, action) => {
       return {
         ...state,
        user: action.payload,
+      };
+      case "USERID":
+      return {
+        ...state,
+       uid: action.payload,
       };
     default:
       return state;
