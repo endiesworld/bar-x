@@ -1,30 +1,50 @@
 import {firestore } from "../firebase.util.store" ;
 
-export const generateLPO = async (lpo) => {
-    const {poNumber, poDate, uid} = lpo;
-    const lpodata = {poNumber, poDate} ;
-    const barprofile  = { lpo } ;
-    const loadNewLPO = "inventory/generatedLPO/lpos/openlpos" ;
-    const loadNewLPONumber = "inventory/generatedLPO/lpos/lpoNumbers" ;
-    const lpodocRef = firestore.doc(`bars/${uid}/${loadNewLPO}`) ;
-    const lpoNodocRef = firestore.doc(`bars/${uid}/${loadNewLPONumber}`) ;
-   
-  try { 
-      await  lpodocRef.update( barprofile ) ;
+const lpoDirectory = {
+    dataDirectory : "inventory/generatedLPO/lpos/openlpos" ,
+    numberDirectory : "inventory/generatedLPO/lpos/lpoNumbers" 
+}
+
+const setFunction = async (lpoDocRef, lpoData, lpoNumberDocRef, lpoNumber) => {
+    try { 
+      await  lpoDocRef.set( lpoData ) ;
  } catch (error) {
       alert(`could not generate new LPO ${error}` ) ;
   }
-
-try { 
-      await  lpoNodocRef.update( lpodata  ) ;
+    try { 
+      await  lpoNumberDocRef.set( lpoNumber ) ;
  } catch (error) {
       alert(`could not generate new LPO number ${error}` ) ;
   }
+}
 
+const updateFunction = async (lpoDocRef, lpoData, lpoNumberDocRef, lpoNumber) => {
+    try { 
+      await  lpoDocRef.update( lpoData ) ;
+ } catch (error) {
+      alert(`could not generate new LPO ${error}` ) ;
+  }
+    try { 
+      await  lpoNumberDocRef.update( lpoNumber ) ;
+ } catch (error) {
+      alert(`could not generate new LPO number ${error}` ) ;
+  }
+}
+
+export const generateLPO = async (lpo) => {
+    const {poNumber, poDate, uid} = lpo;
+    const numberOfLpoGenerated = parseInt(poNumber)
+    const lpodata =  {[numberOfLpoGenerated]: {poNumber, poDate} } ;
+    const generatedLpo  =  { [poNumber]: lpo }  ;
+    const lpodocRef = firestore.doc(`bars/${uid}/${lpoDirectory.dataDirectory}`) ;
+    const lpoNodocRef = firestore.doc(`bars/${uid}/${lpoDirectory.numberDirectory}`) ;
+    (poNumber === "00001") ? setFunction(lpodocRef, generatedLpo, lpoNodocRef, lpodata)
+     : updateFunction(lpodocRef, generatedLpo, lpoNodocRef, lpodata)
 } ;
 
-export const getBarDetails = async (firestore, authDetails) =>{
-    let userDetails = await firestore.doc(`bars/${authDetails.uid}`).get()
-    return userDetails ;
+export const getlpoNumbers = async (uid) =>{
+    let lpoNumbers = await firestore.doc(`bars/${uid}/${lpoDirectory.numberDirectory}`).get() ;
+    lpoNumbers = lpoNumbers.data() ;
+    return (lpoNumbers) ? lpoNumbers : {} ;
 
 };

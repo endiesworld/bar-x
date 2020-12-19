@@ -1,10 +1,11 @@
 import React from 'react'
+import {LoadingParent} from "./loading.styled" ;
 
 function LoadingPage() {
     return (
-        <div>
+        <LoadingParent>
             Loading...
-        </div>
+        </LoadingParent>
     )
 }
 

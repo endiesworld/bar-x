@@ -1,4 +1,4 @@
-import React from 'react' ;
+import React, {useState, useEffect} from 'react' ;
 import { connect } from "react-redux" ;
 
 import {getUserDetails} from "../../../../../../redux/user/user.selector" ;
@@ -15,14 +15,29 @@ lpoInputFieldWidthSize, max_lpoInputFieldWidthSize, setTotalValue} from "../lpo-
 import LpoItemsFieldGenerator from "./lpo_items_field_generator.component"   ; 
 import VendorAndDeliveryTo from "./lpo_vendor_deliveryTo.component" ;
 import GenerateDateAndNumber from "./lpo_number_date.component"
-
+import {getlpoNumbers}from "../../../../../../firebase/inventory/lpos" ;
+   
 
 function GenerateLPO({ deviceType, userDetails, addItemToLPO , uid}) {
     const {barName, state, city, address, mobileNumber, email} = userDetails ;   
-    
-    return (
+    const [ponumber, setPoNumber] = useState("00000") ;
+   useEffect(() => {
+       let number ;
+    async function prcessLastLpoNumber( uid) { 
+          await getlpoNumbers(uid).then((result) => {
+             number = Object.keys(result).length ;
+            number = `0000${number+ 1}` ;
+            setPoNumber(number) ;  
+             } 
+         ) } ;
+    prcessLastLpoNumber(uid)
+   },[uid]) ;
+
+  
+  
+  return   (
         <ParentDiv>
-                <LPOFormik initialValues = {{...initialValues, uid: uid}} onSubmit={onSubmit}>
+                <LPOFormik  enableReinitialize={true} initialValues = {{...initialValues, uid: uid, poNumber: ponumber}} onSubmit={onSubmit}>
                     {(formProps) =>
                  <FormikForm>
                      

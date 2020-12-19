@@ -24,7 +24,6 @@ export const max_lpoInputFieldWidthSize = ["50.6px", "364px", "50.6px", "50.6px"
 const poObjects = [poRowData ] ;
 
  export const initialValues = {
-  poNumber: "00001" ,
   poDate:  poDate,
   vendorContactPerson: "", 
   vendorCompanyName: "",
