@@ -13,6 +13,5 @@ export const createNewUserProfile = async (newUserdetails, fireStore, firebaseAu
 } ;
 
 export const getBarDetails = async (firestore, authDetails) =>{
-    let userDetails = await firestore.doc(`bars/${authDetails.uid}`).get();
-    return userDetails ;
+    return await firestore.doc(`bars/${authDetails.uid}`).get();
 };

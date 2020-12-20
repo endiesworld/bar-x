@@ -32,8 +32,6 @@ function GenerateLPO({ deviceType, userDetails, addItemToLPO , uid}) {
          ) } ;
     prcessLastLpoNumber(uid)
    },[uid]) ;
-
-  
   
   return   (
         <ParentDiv>

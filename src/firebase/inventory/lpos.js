@@ -43,8 +43,10 @@ export const generateLPO = async (lpo) => {
 } ;
 
 export const getlpoNumbers = async (uid) =>{
-    let lpoNumbers = await firestore.doc(`bars/${uid}/${lpoDirectory.numberDirectory}`).get() ;
-    lpoNumbers = lpoNumbers.data() ;
-    return (lpoNumbers) ? lpoNumbers : {} ;
-
+    let lpoNumbers ;
+     await firestore.doc(`bars/${uid}/${lpoDirectory.numberDirectory}`).get() 
+     .then((result)=> {
+      lpoNumbers = result.data() ;
+     }) 
+return (lpoNumbers) ? lpoNumbers : {} ;
 };
