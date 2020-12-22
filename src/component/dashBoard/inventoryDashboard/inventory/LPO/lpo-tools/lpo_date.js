@@ -1,6 +1,4 @@
- import { connect } from "react-redux" ;
 
- import {generateLPO}from "../../../../../../firebase/inventory/lpos" ;
 
  export const getCurrentdate = () => {
   const  [month, day, year]    = new window.Date().toLocaleDateString("en-US").split("/") ;
@@ -111,9 +109,6 @@ const deliveryToEmail =  {
 export const deliveryToDetails = [deliveryToName, deliveryToCompanyName, deliveryToAddress, 
     deliveryToPhone,deliveryToEmail] ;
 
-
-
-
 const processDiscount = (getFieldMeta, existingSubTotal = undefined ) => {
    const percentageValue = getFieldMeta("percentageDiscount").value ;
    const subTotalValue = existingSubTotal || getFieldMeta("subTotal").value ; 
@@ -173,17 +168,10 @@ export const processAmountSubTotal = (setFieldValue, getFieldMeta , index, setFi
     setTotalValue(setFieldValue, getFieldMeta, setFieldTouched, subTotal)
 }
 
-const testingFunction = (dataAsProps) => console.log("Data as ptops: ", dataAsProps)
+// export const onSubmit = async (values) => {
+//     let navigate = useNavigate();
+//   let lpoData = JSON.stringify(values, null, 2);
+//   lpoData = JSON.parse(lpoData) ;
+//   await generateLPO(lpoData).then( navigate('/signin', { replace: true }))
 
-const mapStateToProps = (state) => {
-  const { uid } = state.uid ;
-  return {  uid};
-};
-
-export default connect(mapStateToProps)(testingFunction);
-
-export const onSubmit = (values) => {
-  let lpoData = JSON.stringify(values, null, 2);
-  lpoData = JSON.parse(lpoData) ;
-  generateLPO(lpoData) ;
-};
+// };

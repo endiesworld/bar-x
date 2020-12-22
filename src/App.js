@@ -17,7 +17,7 @@ import SignUpPage from "./pages/signUpPage/signUp.page";
 import SigninPage from "./pages/signinPage/signin.page";
 import { checkScreenSize } from "./screenTypes/deviceTypeSelector";
 import "./App.css";
-import {auth, firestore} from "./firebase/firebase.util.store" ;
+import {auth} from "./firebase/firebase.util.store" ;
 import {getBarDetails} from "./firebase/newUserProfile" ;
 
 function App({ desktopView, mobileView, tabView, deviceType, barxUser, addUid}) {
@@ -26,8 +26,8 @@ function App({ desktopView, mobileView, tabView, deviceType, barxUser, addUid}) 
      let unsub = auth.onAuthStateChanged( async (user) => {  
        if (user) {  
          addUid(user.uid) ;
-         await getBarDetails(firestore, user)
-         .then((userRef) => ( userRef.data().barDetails) ? barxUser( userRef.data().barDetails) : barxUser(user) ) ;
+        let barDetails =  await getBarDetails(user) ;
+        ( barDetails) ? barxUser( barDetails) : barxUser(user) ;
          }
         else {
           barxUser(user) ;

@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react' ;
 import { connect } from "react-redux" ;
+import {  Navigate } from 'react-router-dom';
+import {generateLPO}from "../../../../../../firebase/inventory/lpos" ;
 
 import {getUserDetails} from "../../../../../../redux/user/user.selector" ;
 import {getDeviceType} from "../../../../../../redux/deviceType/deviceType.selector" ;
@@ -10,7 +12,7 @@ import {ParentDiv, LPOFormik, FormikForm, Header, VendorCustomerSection, ItemSec
     VendorDetails,LpoItemGroupElements, LpoInputFieldLabel, NoteAndTotalSide, NoteSide, TotalSide
 } from "./generate_lpo.styled" ;
 import FooterComponent from "../../../../../footerComponent/footer.component" ;
-import {initialValues, onSubmit, vendorDetails, deliveryToDetails, poRowData, tableLabels, setDiscountValue,
+import {initialValues, vendorDetails, deliveryToDetails, poRowData, tableLabels, setDiscountValue,
 lpoInputFieldWidthSize, max_lpoInputFieldWidthSize, setTotalValue} from "../lpo-tools/lpo_date" ;
 import LpoItemsFieldGenerator from "./lpo_items_field_generator.component"   ; 
 import VendorAndDeliveryTo from "./lpo_vendor_deliveryTo.component" ;
@@ -21,6 +23,7 @@ import {getlpoNumbers}from "../../../../../../firebase/inventory/lpos" ;
 function GenerateLPO({ deviceType, userDetails, addItemToLPO , uid}) {
     const {barName, state, city, address, mobileNumber, email} = userDetails ;   
     const [ponumber, setPoNumber] = useState("00000") ;
+    const [lpoGenerated, setLpoGenerated] = useState(false) ;
    useEffect(() => {
        let number ;
     async function prcessLastLpoNumber( uid) { 
@@ -32,8 +35,16 @@ function GenerateLPO({ deviceType, userDetails, addItemToLPO , uid}) {
          ) } ;
     prcessLastLpoNumber(uid)
    },[uid]) ;
+
+ const onSubmit = async (values) => {
+  let lpoData = JSON.stringify(values, null, 2);
+  lpoData = JSON.parse(lpoData) ;
+  await generateLPO(lpoData).then( setLpoGenerated(true))
+
+};
   
-  return   (
+  return (lpoGenerated) ? <Navigate to = '/dashboard/inventory' /> :
+   (
         <ParentDiv>
                 <LPOFormik  enableReinitialize={true} initialValues = {{...initialValues, uid: uid, poNumber: ponumber}} onSubmit={onSubmit}>
                     {(formProps) =>
