@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import {  Navigate } from 'react-router-dom';
 import LoadingPage from "../../loading/loading.component" ;
 import { connect } from "react-redux";
-import {createStructuredSelector} from "reselect" ; 
+//import {createStructuredSelector} from "reselect" ; 
 import {getUserDetails} from "../../../redux/user/user.selector" ;
 
 
@@ -108,10 +108,17 @@ else if (userDetails === null)
 }
 
 
-const mapStateToProps =  createStructuredSelector ( {
-  userDetails: getUserDetails
-}
-)
+// const mapStateToProps =  createStructuredSelector ( {
+//   userDetails: getUserDetails
+// }
+// )
+
+const mapStateToProps = (state) => {
+  
+  const userDetails = getUserDetails(state) ;
+  
+  return {  userDetails};
+};
 
 
 export default connect(mapStateToProps)(SignUpComponent);
