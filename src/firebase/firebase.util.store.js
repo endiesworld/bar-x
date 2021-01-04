@@ -30,7 +30,7 @@ import {createNewUserProfile} from "./newUserProfile" ;
   //export const googleSigninWithPupup = () => auth.signInWithPopup(provider);
   export const signUp = async (newUserDetails) => {
     await auth.createUserWithEmailAndPassword(newUserDetails.email, newUserDetails.password)
-    .then( (response) => createNewUserProfile(newUserDetails,firestore, response.user) )
+    .then( (response) => createNewUserProfile(newUserDetails, response.user) )
   .catch(function(error) {
   // Handle Errors here.
     alert("Unable to sign you up, email already in use by another user") ;
