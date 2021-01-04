@@ -32,9 +32,9 @@ const updateFunction = async (lpoDocRef, lpoData, lpoNumberDocRef, lpoNumber) =>
 }
 
 export const generateLPO = async (lpo) => {
-    const {poNumber, poDate, uid} = lpo;
+    const {poNumber, poDate, uid, vendorCompanyName, totalAmount} = lpo;
     const numberOfLpoGenerated = parseInt(poNumber)
-    const lpodata =  {[numberOfLpoGenerated]: {poNumber, poDate} } ;
+    const lpodata =  {[numberOfLpoGenerated]: {poNumber, poDate, vendorCompanyName, totalAmount} } ;
     const generatedLpo  =  { [poNumber]: lpo }  ;
     const lpodocRef = firestore.doc(`bars/${uid}/${lpoDirectory.dataDirectory}`) ;
     const lpoNodocRef = firestore.doc(`bars/${uid}/${lpoDirectory.numberDirectory}`) ;

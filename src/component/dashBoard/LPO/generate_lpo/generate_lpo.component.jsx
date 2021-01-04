@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react' ;
 import {parentDiv} from "./generate_lpo.styled" ;
-import FooterComponent from "../../../footerComponent/footer.component"
+import FooterComponent from "../../../footerComponent/footer.component" ;
 
 function GenerateLPO() {
     return (

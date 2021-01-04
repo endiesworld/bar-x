@@ -168,10 +168,12 @@ export const processAmountSubTotal = (setFieldValue, getFieldMeta , index, setFi
     setTotalValue(setFieldValue, getFieldMeta, setFieldTouched, subTotal)
 }
 
-// export const onSubmit = async (values) => {
-//     let navigate = useNavigate();
-//   let lpoData = JSON.stringify(values, null, 2);
-//   lpoData = JSON.parse(lpoData) ;
-//   await generateLPO(lpoData).then( navigate('/signin', { replace: true }))
+export const processOnSubmit = (generateLPO, navigate) => {
+ const  onSubmit = async (values) => {
+  let lpoData = JSON.stringify(values, null, 2);
+  lpoData = JSON.parse(lpoData) ;
+  await generateLPO(lpoData).then( navigate('/dashboard/inventory', { replace: true }))
+ }
 
-// };
+ return onSubmit ;
+};

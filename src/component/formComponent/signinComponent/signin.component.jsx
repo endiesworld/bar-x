@@ -30,14 +30,14 @@ function SigninComponent( {userDetails } ) {
     onSubmit,
   });
  
- if( !(userDetails === "LOADING" || userDetails === null)) {
+ if( !(userDetails === "LOADING" || userDetails === null || userDetails === undefined)) {
    return <Navigate to = '/dashboard' /> ;
  }
 
   else if( userDetails === "LOADING") {
    return <LoadingPage /> ;
  }
-else if (userDetails === null)
+else if (userDetails === null || userDetails === undefined )
   return (
     <>
     <Form onSubmit={ formik.handleSubmit}>

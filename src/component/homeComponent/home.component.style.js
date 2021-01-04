@@ -7,8 +7,7 @@ import { ReactComponent as jar } from "../../assets/drink-beer-jar.svg";
 export const HomePageParentDiv = styled.div`
   width: 100vw;
   height: ${(props) => (props.device === "mobile" ? "670px" : "630px")};
- 
-  background-color: #291563;
+ background-color: #291563;
 `;
 
 export const HomePageBackground = styled.div`

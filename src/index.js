@@ -20,6 +20,7 @@ ReactDOM.render(
         <Router>
           <PersistGate persistor={persistor}>
             <App />
+           
           </PersistGate>
         </Router>
       </Provider>

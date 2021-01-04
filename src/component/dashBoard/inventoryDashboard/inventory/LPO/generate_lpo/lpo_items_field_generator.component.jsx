@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import {addItem} from "../../../../../../redux/lpo/addItemToLPO.action";
 import {LpoItemGroupElements, LpoInputField} from "./generate_lpo.styled" ;
-import {lpoInputFieldWidthSize, max_lpoInputFieldWidthSize, processAmountSubTotal } from "../lpo-tools/lpo_date" ;
+import {lpoInputFieldWidthSize, max_lpoInputFieldWidthSize, processAmountSubTotal } from "../lpo-tools/lpo_data_processor" ;
 
 function LpoItemsFieldGenerator({ addItemToPO, name}) {
     
