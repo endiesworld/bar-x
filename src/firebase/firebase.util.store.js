@@ -32,7 +32,6 @@ import {createNewUserProfile} from "./newUserProfile" ;
     await auth.createUserWithEmailAndPassword(newUserDetails.email, newUserDetails.password)
     .then( (response) => createNewUserProfile(newUserDetails, response.user) )
   .catch(function(error) {
-  // Handle Errors here.
     alert("Unable to sign you up, email already in use by another user") ;
    // ...
 });
@@ -40,16 +39,12 @@ import {createNewUserProfile} from "./newUserProfile" ;
   } ;
  export const signIn = (email, password) =>  auth.signInWithEmailAndPassword(email, password)
  .catch(function(error) {
-  // Handle Errors here.
   alert("User name or password does not exist") ;
-  // ...
 });
 
 
 export const signOut = () => auth.signOut().then(function() {
-  // Sign-out successful.
 }).catch(function(error) {
-  // An error happened.
 });
   export default firebase ;
 

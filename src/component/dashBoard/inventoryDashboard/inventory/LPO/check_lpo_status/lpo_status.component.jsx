@@ -29,7 +29,6 @@ function LpoStatus({uid, deviceType}) {
 return  (!lpoDatas) ? <Loading /> :
  (
         <LpoStatusParentDiv>
-            {console.log("deviceType: ", deviceType) }
             <LpoStatusDiv devicetype = {deviceType}>
                 {newTableData.current.map((table, index) => 
                 <LpoTable key ={index} title={table.title}

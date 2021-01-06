@@ -4,9 +4,8 @@ import { useFormik } from "formik";
 import {  Navigate } from 'react-router-dom';
 import LoadingPage from "../../loading/loading.component" ;
 import { connect } from "react-redux";
-//import {createStructuredSelector} from "reselect" ; 
 import {getUserDetails} from "../../../redux/user/user.selector" ;
-
+import {signOut}  from "../../../firebase/firebase.util.store" ;
 
 import {
   Form,
@@ -18,7 +17,6 @@ import {
   Strength,
 } from "./signup.style";
 
-
 import {
   signupFormFields,
   initialValues,
@@ -27,17 +25,15 @@ import {
   passwordProperties,
 } from "./signupFormElement";
 
-function SignUpComponent( {userDetails }) {
-  
+function SignUpComponent( {userDetails}) {
+ 
   const formik = useFormik({
     initialValues,
     onSubmit,
     validate,
   });
 
- 
- 
-if( !(userDetails === "LOADING" || userDetails === null)) {
+if( !(userDetails === "LOADING" || userDetails === null || userDetails === undefined)) {
    return <Navigate to = '/dashboard' /> ;
  }
 
@@ -45,7 +41,12 @@ if( !(userDetails === "LOADING" || userDetails === null)) {
    return <LoadingPage /> ;
  }
 
-else if (userDetails === null)
+ else if(  userDetails === undefined) {
+   signOut() ;
+   return <Navigate to = '/signin' /> ;
+ }
+
+else if (userDetails === null  )
   return (
         <Form onSubmit={formik.handleSubmit}>
       {signupFormFields.map((element, index) => (
@@ -107,16 +108,8 @@ else if (userDetails === null)
   );
 }
 
-
-// const mapStateToProps =  createStructuredSelector ( {
-//   userDetails: getUserDetails
-// }
-// )
-
 const mapStateToProps = (state) => {
-  
   const userDetails = getUserDetails(state) ;
-  
   return {  userDetails};
 };
 

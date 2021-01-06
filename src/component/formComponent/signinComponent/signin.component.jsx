@@ -4,8 +4,7 @@ import { connect } from "react-redux";
 import LoadingPage from "../../loading/loading.component" ;
 import { useFormik } from "formik";
 import {getUserDetails} from "../../../redux/user/user.selector" ;
-//import {createStructuredSelector} from "reselect" ;
-
+import {signOut}  from "../../../firebase/firebase.util.store" ;
 
 import {
   Form,
@@ -34,10 +33,15 @@ function SigninComponent( {userDetails } ) {
    return <Navigate to = '/dashboard' /> ;
  }
 
+else if(  userDetails === undefined) {
+   signOut() ;
+   return <Navigate to = '/signin' /> ;
+ }
+
   else if( userDetails === "LOADING") {
    return <LoadingPage /> ;
  }
-else if (userDetails === null || userDetails === undefined )
+else if (userDetails === null )
   return (
     <>
     <Form onSubmit={ formik.handleSubmit}>
@@ -73,17 +77,9 @@ else if (userDetails === null || userDetails === undefined )
   );
 }
 
-
-// const mapStateToProps =  createStructuredSelector ( {
-//   userDetails: getUserDetails
-// }
-// )
 const mapStateToProps = (state) => {
-  
   const userDetails = getUserDetails(state) ;
-  
   return {  userDetails};
 };
-
 
 export default connect(mapStateToProps)(SigninComponent);

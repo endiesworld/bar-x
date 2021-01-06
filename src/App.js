@@ -28,8 +28,9 @@ function App({ desktopView, mobileView, tabView, deviceType, barxUser, addUid}) 
      let unsub = auth.onAuthStateChanged( async (user) => {  
        if (user) {  
          addUid(user.uid) ;
-        let barDetails =  await getBarDetails(user) ;
-        ( barDetails) ? barxUser( barDetails) : barxUser(user) ;
+        await getBarDetails(user.uid).then((barDetails) =>{
+          barxUser( barDetails);
+          })
          }
         else {
           barxUser(user) ;
